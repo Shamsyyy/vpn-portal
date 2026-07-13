@@ -1,0 +1,439 @@
+{
+  "exportedAt": "2026-07-13T08:07:45Z",
+  "remarkModel": "-i",
+  "subBase": "https://89.125.59.150:31289/shm137",
+  "inbounds": [
+    {
+      "id": 1,
+      "remark": "shm-xhttp-443",
+      "enable": true,
+      "port": 443,
+      "protocol": "vless",
+      "tag": "in-443-tcp"
+    },
+    {
+      "id": 6,
+      "remark": "shm-xhttp-2053",
+      "enable": true,
+      "port": 2053,
+      "protocol": "vless",
+      "tag": "in-2053-xhttp"
+    },
+    {
+      "id": 4,
+      "remark": "shm-tcp-8443",
+      "enable": true,
+      "port": 8443,
+      "protocol": "vless",
+      "tag": "in-8443-tcp"
+    }
+  ],
+  "clients": [
+    {
+      "email": "Airat-main",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "3cd3df2f-b960-44d9-a1c0-e7327d1befdd",
+      "uuid": 17,
+      "subUrl": "https://89.125.59.150:31289/shm137/3cd3df2f-b960-44d9-a1c0-e7327d1befdd",
+      "up": 129408,
+      "down": 626553,
+      "upHuman": "126.4 KB",
+      "downHuman": "611.9 KB",
+      "lastOnline": 1783590082005
+    },
+    {
+      "email": "Diana",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "8ca2da5a-7da2-4a82-9ea5-e80d370c1556",
+      "uuid": 2,
+      "subUrl": "https://89.125.59.150:31289/shm137/8ca2da5a-7da2-4a82-9ea5-e80d370c1556",
+      "up": 280162300,
+      "down": 4534270970,
+      "upHuman": "267.2 MB",
+      "downHuman": "4.2 GB",
+      "lastOnline": 1783929959009
+    },
+    {
+      "email": "Farid",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "241fdbf3-0d37-4cd5-bae0-6040e4dfabed",
+      "uuid": 15,
+      "subUrl": "https://89.125.59.150:31289/shm137/241fdbf3-0d37-4cd5-bae0-6040e4dfabed",
+      "up": 7767,
+      "down": 83070,
+      "upHuman": "7.6 KB",
+      "downHuman": "81.1 KB",
+      "lastOnline": 1783589192008
+    },
+    {
+      "email": "Kolya",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "b0a07ad0-863a-4933-9979-b49f92ee1034",
+      "uuid": 14,
+      "subUrl": "https://89.125.59.150:31289/shm137/b0a07ad0-863a-4933-9979-b49f92ee1034",
+      "up": 8593,
+      "down": 87904,
+      "upHuman": "8.4 KB",
+      "downHuman": "85.8 KB",
+      "lastOnline": 1783589202010
+    },
+    {
+      "email": "Nikita1",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "9b0832ca-bf68-4784-8bd0-807d7d3d35c2",
+      "uuid": 8,
+      "subUrl": "https://89.125.59.150:31289/shm137/9b0832ca-bf68-4784-8bd0-807d7d3d35c2",
+      "up": 427737087,
+      "down": 3221517367,
+      "upHuman": "407.9 MB",
+      "downHuman": "3.0 GB",
+      "lastOnline": 1783590607015
+    },
+    {
+      "email": "Roditeli",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "57f428a7-3dca-4849-a3d8-6c3f19ca7346",
+      "uuid": 7,
+      "subUrl": "https://89.125.59.150:31289/shm137/57f428a7-3dca-4849-a3d8-6c3f19ca7346",
+      "up": 4153176586,
+      "down": 107746058479,
+      "upHuman": "3.9 GB",
+      "downHuman": "100.3 GB",
+      "lastOnline": 1783914942005
+    },
+    {
+      "email": "daur",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
+      "uuid": 1,
+      "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
+      "up": 120893039,
+      "down": 4609286723,
+      "upHuman": "115.3 MB",
+      "downHuman": "4.3 GB",
+      "lastOnline": 1783929439011
+    },
+    {
+      "email": "daur-only-openai",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "a2f5903b-4b17-46ad-863e-3b48fe241454",
+      "uuid": 18,
+      "subUrl": "https://89.125.59.150:31289/shm137/a2f5903b-4b17-46ad-863e-3b48fe241454",
+      "up": 0,
+      "down": 0,
+      "upHuman": "0 B",
+      "downHuman": "0 B",
+      "lastOnline": 0
+    },
+    {
+      "email": "job",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "4f9e5dcc-1413-4c6b-8611-bdd919ba06d3",
+      "uuid": 4,
+      "subUrl": "https://89.125.59.150:31289/shm137/4f9e5dcc-1413-4c6b-8611-bdd919ba06d3",
+      "up": 2174587,
+      "down": 28832210,
+      "upHuman": "2.1 MB",
+      "downHuman": "27.5 MB",
+      "lastOnline": 1783590097020
+    },
+    {
+      "email": "random",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "c14204ba-e311-48d6-bd65-6c03351e2f7d",
+      "uuid": 3,
+      "subUrl": "https://89.125.59.150:31289/shm137/c14204ba-e311-48d6-bd65-6c03351e2f7d",
+      "up": 371496,
+      "down": 1471379,
+      "upHuman": "362.8 KB",
+      "downHuman": "1.4 MB",
+      "lastOnline": 1783590107010
+    },
+    {
+      "email": "router",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
+      "uuid": 5,
+      "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
+      "up": 6425396406,
+      "down": 186606412022,
+      "upHuman": "6.0 GB",
+      "downHuman": "173.8 GB",
+      "lastOnline": 1783930059021
+    },
+    {
+      "email": "test-volodya",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "3606b7c1-ab9a-476d-adb6-89266dbeb056",
+      "uuid": 13,
+      "subUrl": "https://89.125.59.150:31289/shm137/3606b7c1-ab9a-476d-adb6-89266dbeb056",
+      "up": 34861,
+      "down": 158371,
+      "upHuman": "34.0 KB",
+      "downHuman": "154.7 KB",
+      "lastOnline": 1783590112006
+    },
+    {
+      "email": "yandex-list",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "b91cb4d8-0090-4604-8c7c-f7151339d169",
+      "uuid": 6,
+      "subUrl": "https://89.125.59.150:31289/shm137/b91cb4d8-0090-4604-8c7c-f7151339d169",
+      "up": 6888,
+      "down": 69592,
+      "upHuman": "6.7 KB",
+      "downHuman": "68.0 KB",
+      "lastOnline": 1783589227014
+    }
+  ],
+  "clientInbounds": [
+    {
+      "clientId": 1,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 1,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 1,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 2,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 2,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 2,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 3,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 3,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 3,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 4,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 4,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 4,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 5,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 5,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 5,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 6,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 6,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 6,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 7,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 7,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 7,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 8,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 8,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 8,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 13,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 13,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 13,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 14,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 14,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 14,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 15,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 15,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 15,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 17,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 17,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 17,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 18,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 18,
+      "inboundId": 4,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 18,
+      "inboundId": 6,
+      "flowOverride": ""
+    }
+  ],
+  "status": {
+    "xui": "active",
+    "load": [
+      "0.00",
+      "0.01",
+      "0.02"
+    ],
+    "memUsedMb": 657,
+    "memTotalMb": 3915
+  },
+  "id": "shm137",
+  "name": "shm137",
+  "host": "89.125.59.150",
+  "label": "shm137 (router + Roditeli)"
+}

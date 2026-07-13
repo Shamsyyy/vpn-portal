@@ -1,0 +1,21 @@
+{
+  "updatedAt": "2026-07-13T08:07:42Z",
+  "servers": [
+    {
+      "id": "shm137",
+      "label": "shm137 (router + Roditeli)",
+      "host": "89.125.59.150",
+      "clients": 13,
+      "inbounds": 3,
+      "exportedAt": "2026-07-13T08:07:45Z"
+    },
+    {
+      "id": "evka",
+      "label": "evka",
+      "host": "78.17.4.178",
+      "clients": 19,
+      "inbounds": 3,
+      "exportedAt": "2026-07-13T08:07:47Z"
+    }
+  ]
+}

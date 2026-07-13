@@ -1,0 +1,619 @@
+{
+  "exportedAt": "2026-07-13T08:07:47Z",
+  "remarkModel": "-i",
+  "subBase": "https://78.17.4.178:31289/shm137",
+  "inbounds": [
+    {
+      "id": 4,
+      "remark": "evka-xhttp-443",
+      "enable": true,
+      "port": 443,
+      "protocol": "vless",
+      "tag": "in-443-tcp"
+    },
+    {
+      "id": 6,
+      "remark": "evka-xhttp-2053",
+      "enable": true,
+      "port": 2053,
+      "protocol": "vless",
+      "tag": "in-2053-grpc"
+    },
+    {
+      "id": 5,
+      "remark": "evka-tcp-8443",
+      "enable": true,
+      "port": 8443,
+      "protocol": "vless",
+      "tag": "in-8443-tcp"
+    }
+  ],
+  "clients": [
+    {
+      "email": "Airat-evka",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "ecf9ba43-55a0-421a-a4fc-225b78335898",
+      "uuid": 37,
+      "subUrl": "https://78.17.4.178:31289/shm137/ecf9ba43-55a0-421a-a4fc-225b78335898",
+      "up": 8333631087,
+      "down": 32742941730,
+      "upHuman": "7.8 GB",
+      "downHuman": "30.5 GB",
+      "lastOnline": 1783930065041
+    },
+    {
+      "email": "Arturchik",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "34af45f2-8e74-4757-9a2c-d0496b9570e2",
+      "uuid": 33,
+      "subUrl": "https://78.17.4.178:31289/shm137/34af45f2-8e74-4757-9a2c-d0496b9570e2",
+      "up": 934284762,
+      "down": 12305062279,
+      "upHuman": "891.0 MB",
+      "downHuman": "11.5 GB",
+      "lastOnline": 1783709721011
+    },
+    {
+      "email": "Dasha",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "7fee55ca-d082-45ef-85cd-03682a53fe81",
+      "uuid": 34,
+      "subUrl": "https://78.17.4.178:31289/shm137/7fee55ca-d082-45ef-85cd-03682a53fe81",
+      "up": 57628621,
+      "down": 1544848599,
+      "upHuman": "55.0 MB",
+      "downHuman": "1.4 GB",
+      "lastOnline": 1783885305050
+    },
+    {
+      "email": "Diana-evka",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "d439127a-b6bc-4c03-9be7-2f0ad050551e",
+      "uuid": 18,
+      "subUrl": "https://78.17.4.178:31289/shm137/d439127a-b6bc-4c03-9be7-2f0ad050551e",
+      "up": 2295619,
+      "down": 16748259,
+      "upHuman": "2.2 MB",
+      "downHuman": "16.0 MB",
+      "lastOnline": 1783602141014
+    },
+    {
+      "email": "Drug-Airata",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "b4678471-05be-4666-945c-be775b434e41",
+      "uuid": 40,
+      "subUrl": "https://78.17.4.178:31289/shm137/b4678471-05be-4666-945c-be775b434e41",
+      "up": 1325195098,
+      "down": 20461968043,
+      "upHuman": "1.2 GB",
+      "downHuman": "19.1 GB",
+      "lastOnline": 1783930025022
+    },
+    {
+      "email": "Drug-Airata-n2",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "ebf39fbb-9cf7-4d1e-a170-2a1c05b13244",
+      "uuid": 42,
+      "subUrl": "https://78.17.4.178:31289/shm137/ebf39fbb-9cf7-4d1e-a170-2a1c05b13244",
+      "up": 0,
+      "down": 0,
+      "upHuman": "0 B",
+      "downHuman": "0 B",
+      "lastOnline": 0
+    },
+    {
+      "email": "Elvina-evka",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "0e0dd75f-545f-493f-b6db-7d31a8e0391b",
+      "uuid": 39,
+      "subUrl": "https://78.17.4.178:31289/shm137/0e0dd75f-545f-493f-b6db-7d31a8e0391b",
+      "up": 231889890,
+      "down": 4344460357,
+      "upHuman": "221.1 MB",
+      "downHuman": "4.0 GB",
+      "lastOnline": 1783590828020
+    },
+    {
+      "email": "Farida",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "2049846d-3731-4756-954a-897bca5e3fcb",
+      "uuid": 36,
+      "subUrl": "https://78.17.4.178:31289/shm137/2049846d-3731-4756-954a-897bca5e3fcb",
+      "up": 1875172558,
+      "down": 49502797278,
+      "upHuman": "1.7 GB",
+      "downHuman": "46.1 GB",
+      "lastOnline": 1783929615023
+    },
+    {
+      "email": "Kolya-evka",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "b43a8384-b888-49ec-a646-f6d53a775bd3",
+      "uuid": 35,
+      "subUrl": "https://78.17.4.178:31289/shm137/b43a8384-b888-49ec-a646-f6d53a775bd3",
+      "up": 9002,
+      "down": 70571,
+      "upHuman": "8.8 KB",
+      "downHuman": "68.9 KB",
+      "lastOnline": 1782681697020
+    },
+    {
+      "email": "Marat-evka",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "40e64420-8848-46a5-8a50-448881ee65d1",
+      "uuid": 41,
+      "subUrl": "https://78.17.4.178:31289/shm137/40e64420-8848-46a5-8a50-448881ee65d1",
+      "up": 7268,
+      "down": 65538,
+      "upHuman": "7.1 KB",
+      "downHuman": "64.0 KB",
+      "lastOnline": 1783683906030
+    },
+    {
+      "email": "daur-evka",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "80f27a6e-0e99-4c85-8d38-55365bc6d5bf",
+      "uuid": 9,
+      "subUrl": "https://78.17.4.178:31289/shm137/80f27a6e-0e99-4c85-8d38-55365bc6d5bf",
+      "up": 1007529,
+      "down": 10925894,
+      "upHuman": "983.9 KB",
+      "downHuman": "10.4 MB",
+      "lastOnline": 1783599221007
+    },
+    {
+      "email": "nikita-evka",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "4578794c-0b7e-4412-9b76-d21ff330be23",
+      "uuid": 31,
+      "subUrl": "https://78.17.4.178:31289/shm137/4578794c-0b7e-4412-9b76-d21ff330be23",
+      "up": 31561242,
+      "down": 564614106,
+      "upHuman": "30.1 MB",
+      "downHuman": "538.5 MB",
+      "lastOnline": 1783590823034
+    },
+    {
+      "email": "router-evka-new",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "d3a1f241-02e7-4944-adc8-adeae2cad721",
+      "uuid": 32,
+      "subUrl": "https://78.17.4.178:31289/shm137/d3a1f241-02e7-4944-adc8-adeae2cad721",
+      "up": 118503097,
+      "down": 1312827703,
+      "upHuman": "113.0 MB",
+      "downHuman": "1.2 GB",
+      "lastOnline": 1783929805027
+    },
+    {
+      "email": "test-evka-1",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "f4a37f0c-7dcf-4d03-ae15-dbdcb96337c5",
+      "uuid": 24,
+      "subUrl": "https://78.17.4.178:31289/shm137/f4a37f0c-7dcf-4d03-ae15-dbdcb96337c5",
+      "up": 593044833,
+      "down": 2880638032,
+      "upHuman": "565.6 MB",
+      "downHuman": "2.7 GB",
+      "lastOnline": 1783692421026
+    },
+    {
+      "email": "test-evka-2",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
+      "uuid": 25,
+      "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
+      "up": 358738954,
+      "down": 7405699464,
+      "upHuman": "342.1 MB",
+      "downHuman": "6.9 GB",
+      "lastOnline": 1783930040077
+    },
+    {
+      "email": "test-evka-3",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "7c926190-a970-48d2-abbc-c42190b4b5ad",
+      "uuid": 26,
+      "subUrl": "https://78.17.4.178:31289/shm137/7c926190-a970-48d2-abbc-c42190b4b5ad",
+      "up": 154443760,
+      "down": 1262569289,
+      "upHuman": "147.3 MB",
+      "downHuman": "1.2 GB",
+      "lastOnline": 1782736416012
+    },
+    {
+      "email": "test-evka-4",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "21a40643-baff-4a71-bb6a-fb672884f2ca",
+      "uuid": 27,
+      "subUrl": "https://78.17.4.178:31289/shm137/21a40643-baff-4a71-bb6a-fb672884f2ca",
+      "up": 290197536,
+      "down": 3727639276,
+      "upHuman": "276.8 MB",
+      "downHuman": "3.5 GB",
+      "lastOnline": 1783064456012
+    },
+    {
+      "email": "test-evka-5",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "427e3bb6-4dd9-4e88-a71b-98a5013b8ddc",
+      "uuid": 28,
+      "subUrl": "https://78.17.4.178:31289/shm137/427e3bb6-4dd9-4e88-a71b-98a5013b8ddc",
+      "up": 81554,
+      "down": 407798,
+      "upHuman": "79.6 KB",
+      "downHuman": "398.2 KB",
+      "lastOnline": 1782681692017
+    },
+    {
+      "email": "test-router-evka",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "f14a5482-64f9-44aa-aab0-f00e19ad12cd",
+      "uuid": 30,
+      "subUrl": "https://78.17.4.178:31289/shm137/f14a5482-64f9-44aa-aab0-f00e19ad12cd",
+      "up": 378204,
+      "down": 718704,
+      "upHuman": "369.3 KB",
+      "downHuman": "701.9 KB",
+      "lastOnline": 1782681692017
+    }
+  ],
+  "clientInbounds": [
+    {
+      "clientId": 9,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 9,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 9,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 18,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 18,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 18,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 24,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 24,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 24,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 25,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 25,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 25,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 26,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 26,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 26,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 27,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 27,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 27,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 28,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 28,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 28,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 30,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 30,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 30,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 31,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 31,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 31,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 32,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 32,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 32,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 33,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 33,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 33,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 34,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 34,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 34,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 35,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 35,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 35,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 36,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 36,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 36,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 37,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 37,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 37,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 39,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 39,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 39,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 40,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 40,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 40,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 41,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 41,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 41,
+      "inboundId": 6,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 42,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 42,
+      "inboundId": 5,
+      "flowOverride": "xtls-rprx-vision"
+    },
+    {
+      "clientId": 42,
+      "inboundId": 6,
+      "flowOverride": ""
+    }
+  ],
+  "status": {
+    "xui": "active",
+    "load": [
+      "0.26",
+      "0.20",
+      "0.17"
+    ],
+    "memUsedMb": 362,
+    "memTotalMb": 3911
+  },
+  "id": "evka",
+  "name": "evka",
+  "host": "78.17.4.178",
+  "label": "evka"
+}

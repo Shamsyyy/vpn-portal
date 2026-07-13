@@ -1,0 +1,249 @@
+:root {
+  --bg: #0a0c10;
+  --surface: #12161e;
+  --surface2: #1a2130;
+  --stroke: #2a3344;
+  --text: #e8edf5;
+  --muted: #8b97a8;
+  --accent: #4f8cff;
+  --accent2: #36c98e;
+  --danger: #ff5d6c;
+  --warn: #ffb020;
+  --radius: 14px;
+  --font: "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.hidden { display: none !important; }
+
+/* Login */
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: min(400px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  padding: 32px 28px;
+}
+
+.login-card h1 { margin: 0 0 8px; font-size: 24px; }
+.login-card p { margin: 0 0 20px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: #0d1118;
+  color: var(--text);
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+button {
+  border: 1px solid var(--stroke);
+  background: var(--surface2);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover { border-color: #3d4a5f; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+button.danger { background: #2a1519; border-color: #5a2b32; color: #ffd6da; }
+button.success { background: #123524; border-color: #24553f; color: #b8ffd8; }
+
+.login-error { color: #ffb4bc; font-size: 13px; margin-bottom: 12px; min-height: 18px; }
+
+/* App shell */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 16px 14px 80px; }
+
+header.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header.top h1 { margin: 0; font-size: 22px; flex: 1; }
+.meta-line { color: var(--muted); font-size: 13px; }
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.stat .label { color: var(--muted); font-size: 11px; text-transform: uppercase; }
+.stat .value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.toolbar .search { flex: 1; min-width: 180px; margin-bottom: 0; }
+
+.inbound-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+
+.chip {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.chip .port { font-weight: 700; color: var(--accent2); }
+
+.client-list { display: flex; flex-direction: column; gap: 10px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.card.disabled { opacity: 0.55; }
+.card.changed { border-color: #3a5a8a; }
+
+.card-head { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+.name { font-size: 17px; font-weight: 700; }
+.submeta { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+.badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.badge { padding: 4px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.badge.on { background: #123524; color: #7dffb8; }
+.badge.off { background: #3a2020; color: #ff9ea8; }
+.badge.edit { background: #2a2a15; color: #ffe2a8; }
+
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.cell { background: #0d1118; border: 1px solid var(--stroke); border-radius: 8px; padding: 8px 10px; }
+.cell .k { color: var(--muted); font-size: 10px; text-transform: uppercase; }
+.cell .v { font-size: 13px; font-weight: 600; margin-top: 3px; word-break: break-all; }
+
+.linktext {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  color: #b8c7e6;
+  background: #0d1118;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  padding: 8px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 8px;
+}
+
+.btn-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.btn-row button { padding: 7px 10px; font-size: 12px; }
+
+.modal-back {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 16px;
+}
+
+.modal-back.open { display: flex; }
+
+.modal {
+  width: min(480px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.modal h3 { margin: 0 0 8px; }
+.modal p { margin: 0 0 14px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+
+.toast {
+  position: fixed; right: 18px; bottom: 18px;
+  background: #123524; color: #b8ffd8;
+  border: 1px solid #24553f;
+  padding: 12px 14px; border-radius: 10px;
+  display: none; z-index: 60;
+}
+
+.toast.show { display: block; }
+.toast.err { background: #2a1519; color: #ffb4bc; border-color: #5a2b32; }
+
+.pending-bar {
+  background: #1a2535;
+  border: 1px solid #2a4060;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.pending-bar.show { display: block; }
+
+@media (max-width: 640px) {
+  .wrap { padding-bottom: 100px; }
+}

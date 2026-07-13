@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VPN Portal — shm137 + evka</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loginScreen" class="login-wrap">
+    <div class="login-card">
+      <h1>VPN Portal</h1>
+      <p>Данные с shm137 и evka. Вход по паролю.</p>
+      <div id="loginError" class="login-error"></div>
+      <label for="password">Пароль</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="Пароль" />
+      <button id="loginBtn" class="primary" style="width:100%">Войти</button>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <div class="wrap">
+      <header class="top">
+        <div>
+          <h1>VPN Portal</h1>
+          <div id="syncMeta" class="meta-line">Загрузка…</div>
+        </div>
+        <button id="logoutBtn">Выйти</button>
+      </header>
+
+      <div id="pendingBar" class="pending-bar">
+        <strong>Есть несохранённые изменения</strong>
+        <span id="pendingCount"></span>
+        <div class="btn-row" style="margin-top:10px">
+          <button id="saveLocalBtn" class="success">Сохранить локально</button>
+          <button id="exportChangesBtn">Скачать changes.json</button>
+          <button id="applyGithubBtn" class="primary">Применить на серверах (GitHub)</button>
+          <button id="discardBtn" class="danger">Отменить</button>
+        </div>
+      </div>
+
+      <div class="tabs" id="serverTabs"></div>
+
+      <div id="stats" class="stats"></div>
+      <div id="inboundChips" class="inbound-chips"></div>
+
+      <div class="toolbar">
+        <input id="search" class="search" type="search" placeholder="Поиск клиента…" />
+        <button id="refreshBtn">Обновить данные</button>
+        <button id="copySubBtn">Копировать подписку</button>
+      </div>
+
+      <div id="clientList" class="client-list"></div>
+    </div>
+  </div>
+
+  <div id="editModal" class="modal-back">
+    <div class="modal">
+      <h3 id="editTitle">Редактировать</h3>
+      <p id="editSubtitle"></p>
+      <label>Статус</label>
+      <select id="editEnable">
+        <option value="true">Включён</option>
+        <option value="false">Выключен</option>
+      </select>
+      <label>Лимит трафика (GB, 0 = безлимит)</label>
+      <input id="editTotalGB" type="number" min="0" step="1" />
+      <label>Срок (дата, пусто = без срока)</label>
+      <input id="editExpiry" type="date" />
+      <label>Заметка (только в портале)</label>
+      <input id="editNote" type="text" placeholder="Комментарий" />
+      <div class="modal-actions">
+        <button id="editCancel">Отмена</button>
+        <button id="editSave" class="primary">Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="githubModal" class="modal-back">
+    <div class="modal">
+      <h3>Применить через GitHub</h3>
+      <p>Сохранит <code>data/overrides.json</code> в репозиторий и запустит Action для применения на серверах. Нужен GitHub Personal Access Token с правом <code>repo</code>.</p>
+      <label>GitHub Token</label>
+      <input id="ghToken" type="password" autocomplete="off" placeholder="ghp_…" />
+      <label>owner/repo</label>
+      <input id="ghRepo" type="text" placeholder="username/vpn-portal" />
+      <div class="modal-actions">
+        <button id="ghCancel">Отмена</button>
+        <button id="ghSubmit" class="primary">Отправить</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
