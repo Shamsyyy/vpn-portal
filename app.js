@@ -581,25 +581,97 @@
   }
 
   function ghHeaders(token) {
-    return { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json" };
+    return {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    };
+  }
+
+  function jsonToBase64(obj) {
+    const bytes = new TextEncoder().encode(JSON.stringify(obj, null, 2));
+    let binary = "";
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    return btoa(binary);
+  }
+
+  function ghErrorMessage(err, status) {
+    const msg = err?.message || "";
+    if (status === 401 || status === 403) {
+      return "Токен GitHub неверный или нет прав repo/workflow. Создай новый classic token.";
+    }
+    if (status === 409 || msg.includes("does not match")) {
+      return "Конфликт версии файла на GitHub. Повтори через 2 сек или нажми ещё раз.";
+    }
+    return msg || `Ошибка GitHub (HTTP ${status})`;
+  }
+
+  async function pushOverridesViaWorkflow(token, repo, payload) {
+    const b64 = jsonToBase64(payload);
+    const res = await fetch(
+      `https://api.github.com/repos/${repo}/actions/workflows/apply-changes.yml/dispatches`,
+      {
+        method: "POST",
+        headers: { ...ghHeaders(token), "Content-Type": "application/json" },
+        body: JSON.stringify({ ref: "main", inputs: { payload_b64: b64 } }),
+      }
+    );
+    if (!res.ok && res.status !== 204) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(ghErrorMessage(err, res.status));
+    }
+  }
+
+  async function pushOverridesViaContents(token, repo, payload) {
+    const path = "data/overrides.json";
+    const api = `https://api.github.com/repos/${repo}/contents/${path}`;
+    const content = jsonToBase64(payload);
+    const message = "portal: apply client changes";
+
+    for (let attempt = 0; attempt < 3; attempt++) {
+      let sha = null;
+      const getRes = await fetch(`${api}?ref=main`, { headers: ghHeaders(token) });
+      if (getRes.ok) sha = (await getRes.json()).sha;
+      else if (getRes.status !== 404) {
+        const err = await getRes.json().catch(() => ({}));
+        throw new Error(ghErrorMessage(err, getRes.status));
+      }
+
+      const body = { message, content, branch: "main" };
+      if (sha) body.sha = sha;
+
+      const putRes = await fetch(api, {
+        method: "PUT",
+        headers: { ...ghHeaders(token), "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (putRes.ok) return;
+      const err = await putRes.json().catch(() => ({}));
+      if (putRes.status === 409 && attempt < 2) {
+        await new Promise((r) => setTimeout(r, 800));
+        continue;
+      }
+      throw new Error(ghErrorMessage(err, putRes.status));
+    }
   }
 
   async function pushOverrides(token, repo) {
     const { payload, count } = pendingPayload();
-    if (!count) { toast("Нет изменений", true); return; }
-    const path = "data/overrides.json";
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
-    const api = `https://api.github.com/repos/${repo}/contents/${path}`;
-    let sha;
-    const getRes = await fetch(api, { headers: ghHeaders(token) });
-    if (getRes.ok) sha = (await getRes.json()).sha;
-    const putRes = await fetch(api, {
-      method: "PUT",
-      headers: { ...ghHeaders(token), "Content-Type": "application/json" },
-      body: JSON.stringify({ message: "portal: apply changes", content, sha }),
-    });
-    if (!putRes.ok) throw new Error((await putRes.json().catch(() => ({}))).message || putRes.statusText);
-    toast("Отправлено! Применение ~1 мин");
+    if (!count) {
+      toast("Нет изменений", true);
+      return;
+    }
+    if (!token || token.startsWith("••")) {
+      throw new Error("GitHub token не задан. Открой ⚙ и вставь ghp_…");
+    }
+
+    try {
+      await pushOverridesViaWorkflow(token, repo, payload);
+    } catch (wfErr) {
+      await pushOverridesViaContents(token, repo, payload);
+    }
+
+    toast("Отправлено! Применение на серверах ~1–2 мин. Потом нажми ↻ Синк");
   }
 
   async function triggerSync(token, repo) {
@@ -714,8 +786,23 @@
 
     $("applyGithubBtn").onclick = async () => {
       const { token, repo } = getGhCreds();
-      if (!token) { $("githubModal").classList.add("open"); return; }
-      try { await pushOverrides(token, repo); } catch (e) { toast(e.message, true); }
+      if (!token || token.startsWith("••")) {
+        $("githubModal").classList.add("open");
+        toast("Нужен GitHub token — открой ⚙", true);
+        return;
+      }
+      const btn = $("applyGithubBtn");
+      const label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Отправка…";
+      try {
+        await pushOverrides(token, repo);
+      } catch (e) {
+        toast(e.message || "Ошибка отправки", true);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = label;
+      }
     };
 
     $("syncGithubBtn").onclick = async () => {

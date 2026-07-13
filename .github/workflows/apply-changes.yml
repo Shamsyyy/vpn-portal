@@ -5,6 +5,10 @@ on:
     paths:
       - data/overrides.json
   workflow_dispatch:
+    inputs:
+      payload_b64:
+        description: Base64-encoded overrides JSON from portal
+        required: false
 
 permissions:
   contents: write
@@ -21,6 +25,10 @@ jobs:
 
       - name: Install deps
         run: pip install paramiko
+
+      - name: Write overrides from portal dispatch
+        if: github.event_name == 'workflow_dispatch' && inputs.payload_b64 != ''
+        run: python3 -c "import base64, pathlib; pathlib.Path('data').mkdir(exist_ok=True); pathlib.Path('data/overrides.json').write_bytes(base64.b64decode('${{ inputs.payload_b64 }}'))"
 
       - name: Apply overrides to servers
         if: hashFiles('data/overrides.json') != ''
