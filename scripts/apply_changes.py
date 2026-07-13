@@ -20,7 +20,7 @@ SERVERS = {
 
 def build_remote_script(changes_json: str) -> str:
     return f'''
-import json, requests, uuid as uuidlib
+import json, requests
 requests.packages.urllib3.disable_warnings()
 
 payload = json.loads({json.dumps(changes_json)})
@@ -33,19 +33,28 @@ cfg = json.load(open("/opt/vpn-dashboard/config.json", encoding="utf-8"))
 base = cfg["panel_url"].rstrip("/")
 s = requests.Session()
 s.verify = False
-csrf = s.get(f"{{base}}/csrf-token", timeout=15).json()["obj"]
+
+def api_json(resp, label):
+    if not resp.text.strip():
+        raise SystemExit(f"{{label}}: empty HTTP {{resp.status_code}}")
+    try:
+        return resp.json()
+    except Exception:
+        raise SystemExit(f"{{label}}: HTTP {{resp.status_code}} {{resp.text[:300]}}")
+
+csrf = api_json(s.get(f"{{base}}/csrf-token", timeout=15), "csrf")["obj"]
 headers = {{"X-CSRF-TOKEN": csrf}}
-login = s.post(
+login = api_json(s.post(
     f"{{base}}/login",
     json={{"username": cfg["panel_user"], "password": cfg["panel_password"]}},
     headers=headers, timeout=15,
-).json()
+), "login")
 if not login.get("success"):
     raise SystemExit(login.get("msg") or "login failed")
 
 def get_client(email):
-    r = s.get(f"{{base}}/panel/api/clients/get/{{email}}", headers=headers, timeout=20).json()
-    return (r.get("obj") or {{}}).get("client") or {{}}
+    data = api_json(s.get(f"{{base}}/panel/api/clients/get/{{email}}", headers=headers, timeout=20), f"get {{email}}")
+    return (data.get("obj") or {{}}).get("client") or {{}}
 
 def update_client(email, patch):
     c = get_client(email)
@@ -60,56 +69,68 @@ def update_client(email, patch):
         "tgId": int(c.get("tgId") or 0),
         "reset": int(c.get("reset") or 0),
     }}
-    u = s.post(f"{{base}}/panel/api/clients/update/{{email}}", json=body, headers=headers, timeout=20).json()
-    if not u.get("success"):
-        raise SystemExit(u.get("msg") or email)
+    result = api_json(s.post(
+        f"{{base}}/panel/api/clients/update/{{email}}",
+        json=body, headers=headers, timeout=20,
+    ), f"update {{email}}")
+    if not result.get("success"):
+        raise SystemExit(result.get("msg") or f"update failed: {{email}}")
 
 for email, patch in clients.items():
-  if patch:
-    update_client(email, patch)
-    print("UPDATE", email)
+    if not patch:
+        continue
+    server_patch = {{k: v for k, v in patch.items() if k in ("enable", "totalGB", "expiryTime", "limitIp")}}
+    if server_patch:
+        update_client(email, server_patch)
+        print("UPDATE", email)
 
 for email in resets:
-    u = s.post(f"{{base}}/panel/api/clients/{{email}}/resetTraffic", headers=headers, timeout=20).json()
-    if not u.get("success"):
-        raise SystemExit(u.get("msg") or email)
+    result = api_json(s.post(
+        f"{{base}}/panel/api/clients/resetTraffic/{{email}}",
+        headers=headers, timeout=20,
+    ), f"reset {{email}}")
+    if not result.get("success"):
+        raise SystemExit(result.get("msg") or f"reset failed: {{email}}")
     print("RESET", email)
 
 for email in deletes:
-    u = s.post(f"{{base}}/panel/api/clients/del/{{email}}", headers=headers, timeout=20).json()
-    if not u.get("success"):
-        raise SystemExit(u.get("msg") or email)
+    result = api_json(s.post(
+        f"{{base}}/panel/api/clients/del/{{email}}",
+        headers=headers, timeout=20,
+    ), f"delete {{email}}")
+    if not result.get("success"):
+        raise SystemExit(result.get("msg") or f"delete failed: {{email}}")
     print("DELETE", email)
 
-inbounds = s.get(f"{{base}}/panel/api/inbounds/list", headers=headers, timeout=20).json().get("obj") or []
-ib_id = next((ib["id"] for ib in inbounds if ib.get("enable")), None)
-if not ib_id and inbounds:
-    ib_id = inbounds[0]["id"]
-
-for item in creates:
-    email = item.get("email") if isinstance(item, dict) else item
-    if not email or not ib_id:
-        continue
-    body = {{
-        "id": ib_id,
-        "settings": json.dumps({{
-            "clients": [{{
-                "id": str(uuidlib.uuid4()),
-                "email": email,
-                "enable": True,
-                "expiryTime": 0,
-                "totalGB": 0,
-                "limitIp": 0,
-                "subId": str(uuidlib.uuid4()),
-                "tgId": "",
-                "reset": 0,
-            }}]
-        }}),
-    }}
-    u = s.post(f"{{base}}/panel/api/inbounds/addClient", json=body, headers=headers, timeout=20).json()
-    if not u.get("success"):
-        raise SystemExit(u.get("msg") or email)
-    print("CREATE", email)
+if creates:
+    inbounds = api_json(s.get(f"{{base}}/panel/api/inbounds/list", headers=headers, timeout=20), "inbounds").get("obj") or []
+    inbound_ids = [ib["id"] for ib in inbounds if ib.get("enable")]
+    if not inbound_ids:
+        raise SystemExit("no enabled inbounds")
+    for item in creates:
+        email = (item.get("email") if isinstance(item, dict) else item) or ""
+        email = str(email).strip()
+        if not email:
+            continue
+        result = api_json(s.post(
+            f"{{base}}/panel/api/clients/add",
+            json={{
+                "client": {{
+                    "email": email,
+                    "enable": True,
+                    "expiryTime": 0,
+                    "totalGB": 0,
+                    "limitIp": 0,
+                    "tgId": 0,
+                    "reset": 0,
+                }},
+                "inboundIds": inbound_ids,
+            }},
+            headers=headers, timeout=20,
+        ), f"create {{email}}")
+        if not result.get("success"):
+            raise SystemExit(result.get("msg") or f"create failed: {{email}}")
+        print("CREATE", email)
 
 print("DONE")
 '''
@@ -117,17 +138,18 @@ print("DONE")
 
 def ssh_password(server_id: str) -> str:
     env_key = "SSH_PASS_SHM" if server_id == "shm137" else "SSH_PASS_EVKA"
-    from_env = os.environ.get(env_key)
+    from_env = (os.environ.get(env_key) or "").strip()
     if from_env:
         return from_env
-    dashboard_cfg = {}
     if DASHBOARD_CFG.exists():
         dashboard_cfg = json.loads(DASHBOARD_CFG.read_text(encoding="utf-8"))
-    if server_id == "shm137":
-        return dashboard_cfg.get("ssh_password") or r"#m=C}Dv)f3Qc^f:fMhh5e94QbiWjJh:g"
-    if server_id == "evka":
-        return "y4M4NQbaR8ork55BJ8"
-    raise ValueError(server_id)
+        local = (dashboard_cfg.get("ssh_password") or "").strip()
+        if server_id == "shm137" and local:
+            return local
+    raise RuntimeError(
+        f"SSH password missing for {server_id}. "
+        f"Add GitHub secret {env_key} in repo Settings → Secrets."
+    )
 
 
 def apply_server(server_id: str, server_payload: dict) -> None:

@@ -30,6 +30,13 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.payload_b64 != ''
         run: python3 -c "import base64, pathlib; pathlib.Path('data').mkdir(exist_ok=True); pathlib.Path('data/overrides.json').write_bytes(base64.b64decode('${{ inputs.payload_b64 }}'))"
 
+      - name: Verify SSH secrets
+        run: |
+          if [ -z "${{ secrets.SSH_PASS_SHM }}" ] || [ -z "${{ secrets.SSH_PASS_EVKA }}" ]; then
+            echo "::error::Add GitHub secrets SSH_PASS_SHM and SSH_PASS_EVKA in Settings → Secrets → Actions"
+            exit 1
+          fi
+
       - name: Apply overrides to servers
         if: hashFiles('data/overrides.json') != ''
         env:
