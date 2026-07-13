@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-13T10:07:12Z",
+  "updatedAt": "2026-07-13T14:29:15Z",
   "servers": [
     {
       "id": "shm137",
@@ -7,15 +7,15 @@
       "host": "89.125.59.150",
       "clients": 13,
       "inbounds": 3,
-      "exportedAt": "2026-07-13T10:07:15Z"
+      "exportedAt": "2026-07-13T14:29:18Z"
     },
     {
       "id": "evka",
       "label": "evka",
       "host": "78.17.4.178",
-      "clients": 19,
+      "clients": 20,
       "inbounds": 3,
-      "exportedAt": "2026-07-13T10:07:19Z"
+      "exportedAt": "2026-07-13T14:29:22Z"
     }
   ]
 }
