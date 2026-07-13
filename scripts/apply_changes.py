@@ -28,6 +28,7 @@ clients = payload.get("clients") or {{}}
 creates = payload.get("create") or []
 resets = payload.get("resetTraffic") or []
 deletes = payload.get("delete") or []
+inbounds_patch = payload.get("inbounds") or {{}}
 
 cfg = json.load(open("/opt/vpn-dashboard/config.json", encoding="utf-8"))
 base = cfg["panel_url"].rstrip("/")
@@ -132,6 +133,32 @@ if creates:
             raise SystemExit(result.get("msg") or f"create failed: {{email}}")
         print("CREATE", email)
 
+if inbounds_patch:
+    listed = api_json(s.get(f"{{base}}/panel/api/inbounds/list", headers=headers, timeout=20), "inbounds").get("obj") or []
+    by_id = {{str(ib.get("id")): ib for ib in listed}}
+    for ib_id, patch in inbounds_patch.items():
+        ib = by_id.get(str(ib_id))
+        if not ib:
+            raise SystemExit(f"inbound not found: {{ib_id}}")
+        body = {{
+            "enable": bool(patch.get("enable", ib.get("enable", True))),
+            "remark": patch.get("remark", ib.get("remark")),
+            "listen": ib.get("listen", ""),
+            "port": ib.get("port"),
+            "protocol": ib.get("protocol", "vless"),
+            "settings": ib.get("settings") or {{}},
+            "streamSettings": ib.get("streamSettings") or ib.get("stream_settings") or {{}},
+            "sniffing": ib.get("sniffing") or {{"enabled": True, "destOverride": ["http", "tls", "quic", "fakedns"]}},
+            "tag": ib.get("tag"),
+        }}
+        result = api_json(s.post(
+            f"{{base}}/panel/api/inbounds/update/{{ib_id}}",
+            json=body, headers=headers, timeout=20,
+        ), f"inbound {{ib_id}}")
+        if not result.get("success"):
+            raise SystemExit(result.get("msg") or f"inbound update failed: {{ib_id}}")
+        print("INBOUND", ib_id)
+
 print("DONE")
 '''
 
@@ -184,7 +211,7 @@ def main() -> None:
             continue
         has_work = any(
             server_payload.get(k)
-            for k in ("clients", "create", "resetTraffic", "delete")
+            for k in ("clients", "create", "resetTraffic", "delete", "inbounds")
         )
         if not has_work:
             continue

@@ -416,6 +416,72 @@ input:focus, select:focus {
   color: #9ec0ff;
 }
 
+.inbound-card.disabled { opacity: 0.55; }
+.inbound-card.changed { border-color: rgba(91, 140, 255, 0.45); }
+
+/* View tabs */
+.view-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.view-tab {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: rgba(14, 20, 32, 0.55);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.view-tab:hover { border-color: rgba(120, 150, 200, 0.35); color: var(--text); }
+.view-tab.active {
+  background: rgba(91, 140, 255, 0.18);
+  border-color: rgba(91, 140, 255, 0.45);
+  color: #c8dcff;
+}
+
+.toolbar-hint {
+  color: var(--muted);
+  font-size: 13px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.readonly-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.card.probe-ok { border-color: rgba(61, 214, 160, 0.35); }
+.card.probe-bad { border-color: rgba(255, 100, 120, 0.35); }
+
+.tunnel-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tunnel-chip {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+.tunnel-chip.ok { background: rgba(61, 214, 160, 0.12); color: #9dffd0; }
+.tunnel-chip.bad { background: rgba(255, 100, 120, 0.12); color: #ffb4bc; }
+
+.probe-issues { color: #ffb4bc; }
+
 /* Toolbar */
 .toolbar {
   display: flex;

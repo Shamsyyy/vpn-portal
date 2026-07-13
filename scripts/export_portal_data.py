@@ -54,11 +54,18 @@ cur.execute("SELECT id, remark, enable, port, protocol, tag, stream_settings FRO
 inbounds = []
 for r in cur.fetchall():
     stream = json.loads(r[6] or "{}")
+    rs = stream.get("realitySettings") or {}
+    xh = stream.get("xhttpSettings") or {}
+    snames = rs.get("serverNames") or []
     inbounds.append({
         "id": r[0], "remark": r[1], "enable": bool(r[2]), "port": r[3],
         "protocol": r[4], "tag": r[5],
         "network": stream.get("network") or "tcp",
         "security": stream.get("security") or "",
+        "sni": snames[0] if snames else "",
+        "dest": rs.get("target") or "",
+        "xhttpPath": xh.get("path") or "",
+        "xhttpMode": xh.get("mode") or "",
     })
 
 cur.execute("""

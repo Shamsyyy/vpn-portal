@@ -72,28 +72,78 @@
       <section id="serverPanel">
         <div class="server-hero" id="serverHero"></div>
         <div id="stats" class="stats"></div>
-        <div id="inboundChips" class="inbound-grid"></div>
 
-        <div class="toolbar glass">
-          <input id="search" class="search" type="search" placeholder="Поиск клиента…" />
-          <select id="filterSelect" class="select compact">
-            <option value="all">Все</option>
-            <option value="online">Онлайн</option>
-            <option value="enabled">Активные</option>
-            <option value="disabled">Выключенные</option>
-            <option value="changed">Изменённые</option>
-          </select>
-          <select id="sortSelect" class="select compact">
-            <option value="name">По имени</option>
-            <option value="traffic">По трафику</option>
-            <option value="expiry">По сроку</option>
-          </select>
-          <button id="addClientBtn" class="btn primary">+ Клиент</button>
+        <nav class="view-tabs" id="viewTabs">
+          <button class="view-tab active" data-view="clients">Клиенты</button>
+          <button class="view-tab" data-view="inbounds">Инбаунды</button>
+          <button class="view-tab" data-view="probes">Пинг VPN</button>
+        </nav>
+
+        <div id="clientsView">
+          <div class="toolbar glass">
+            <input id="search" class="search" type="search" placeholder="Поиск клиента…" />
+            <select id="filterSelect" class="select compact">
+              <option value="all">Все</option>
+              <option value="online">Онлайн</option>
+              <option value="enabled">Активные</option>
+              <option value="disabled">Выключенные</option>
+              <option value="changed">Изменённые</option>
+            </select>
+            <select id="sortSelect" class="select compact">
+              <option value="name">По имени</option>
+              <option value="traffic">По трафику</option>
+              <option value="expiry">По сроку</option>
+            </select>
+            <button id="addClientBtn" class="btn primary">+ Клиент</button>
+          </div>
+          <div id="clientList" class="client-list"></div>
         </div>
 
-        <div id="clientList" class="client-list"></div>
+        <div id="inboundsView" class="hidden">
+          <div class="toolbar glass">
+            <span class="toolbar-hint">Редактирование remark и вкл/выкл. Порт и протокол — только в панели 3x-ui.</span>
+          </div>
+          <div id="inboundList" class="inbound-grid"></div>
+        </div>
+
+        <div id="probesView" class="hidden">
+          <div class="toolbar glass">
+            <button id="probeAllBtn" class="btn primary">Пинг всех VPN</button>
+            <button id="probeRefreshBtn" class="btn">Обновить данные</button>
+            <span id="probeMeta" class="toolbar-hint">—</span>
+          </div>
+          <div id="probeList" class="client-list"></div>
+        </div>
       </section>
     </main>
+  </div>
+
+  <!-- Edit inbound -->
+  <div id="inboundModal" class="modal-back">
+    <div class="modal glass">
+      <h3 id="inboundTitle">Инбаунд</h3>
+      <p id="inboundSubtitle" class="modal-sub"></p>
+      <div class="form-grid">
+        <div>
+          <label>Статус</label>
+          <select id="inboundEnable">
+            <option value="true">Включён</option>
+            <option value="false">Выключен</option>
+          </select>
+        </div>
+        <div>
+          <label>Порт (только чтение)</label>
+          <input id="inboundPort" type="text" readonly disabled />
+        </div>
+      </div>
+      <label>Remark (название)</label>
+      <input id="inboundRemark" type="text" placeholder="shm-xhttp-443" />
+      <div class="readonly-grid" id="inboundDetails"></div>
+      <div class="modal-actions">
+        <button id="inboundCancel" class="btn">Отмена</button>
+        <button id="inboundSave" class="btn primary">Сохранить</button>
+      </div>
+    </div>
   </div>
 
   <!-- Edit -->
@@ -178,6 +228,6 @@
   <div id="toast" class="toast"></div>
 
   <script src="qrcode.min.js"></script>
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

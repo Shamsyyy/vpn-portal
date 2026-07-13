@@ -15,8 +15,11 @@
   let servers = {};
   let overrides = migrateOverrides(loadOverrides());
   let activeServer = "all";
+  let viewMode = "clients";
   let editing = null;
+  let editingInbound = null;
   let qrUrl = "";
+  let probes = {};
 
   function loadOverrides() {
     try {
@@ -30,16 +33,17 @@
     const out = {};
     for (const [sid, val] of Object.entries(raw)) {
       if (!val || typeof val !== "object") continue;
-      if (val.clients || val.create || val.resetTraffic || val.delete) {
+      if (val.clients || val.create || val.resetTraffic || val.delete || val.inbounds) {
         out[sid] = {
           clients: val.clients || {},
+          inbounds: val.inbounds || {},
           create: val.create || [],
           resetTraffic: val.resetTraffic || [],
           delete: val.delete || [],
         };
         continue;
       }
-      out[sid] = { clients: {}, create: [], resetTraffic: [], delete: [] };
+      out[sid] = { clients: {}, inbounds: {}, create: [], resetTraffic: [], delete: [] };
       for (const [email, patch] of Object.entries(val)) {
         if (email.startsWith("_")) continue;
         out[sid].clients[email] = patch;
@@ -50,7 +54,7 @@
 
   function ensureServer(sid) {
     if (!overrides[sid]) {
-      overrides[sid] = { clients: {}, create: [], resetTraffic: [], delete: [] };
+      overrides[sid] = { clients: {}, inbounds: {}, create: [], resetTraffic: [], delete: [] };
     }
     return overrides[sid];
   }
@@ -225,8 +229,16 @@
         clients[email] = { ...rest, note: note || "" };
         count++;
       }
+      const inbounds = {};
+      for (const [ibId, patch] of Object.entries(bucket.inbounds || {})) {
+        if (!patch._changed) continue;
+        const { _changed, ...rest } = patch;
+        inbounds[ibId] = rest;
+        count++;
+      }
       const slice = {};
       if (Object.keys(clients).length) slice.clients = clients;
+      if (Object.keys(inbounds).length) slice.inbounds = inbounds;
       if (bucket.resetTraffic?.length) { slice.resetTraffic = [...bucket.resetTraffic]; count += bucket.resetTraffic.length; }
       if (bucket.delete?.length) { slice.delete = [...bucket.delete]; count += bucket.delete.length; }
       if (bucket.create?.length) { slice.create = [...bucket.create]; count += bucket.create.length; }
@@ -243,13 +255,16 @@
 
   async function loadData() {
     const ts = Date.now();
-    const [m, s1, s2] = await Promise.all([
+    const [m, s1, s2, p1, p2] = await Promise.all([
       fetch(`data/manifest.json?t=${ts}`).then((r) => r.json()),
       fetch(`data/shm137.json?t=${ts}`).then((r) => r.json()),
       fetch(`data/evka.json?t=${ts}`).then((r) => r.json()),
+      fetch(`data/probes/shm137.json?t=${ts}`).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      fetch(`data/probes/evka.json?t=${ts}`).then((r) => (r.ok ? r.json() : null)).catch(() => null),
     ]);
     manifest = m;
     servers = { shm137: s1, evka: s2 };
+    probes = { shm137: p1, evka: p2 };
     for (const s of manifest.servers || []) {
       if (s.label?.includes("router")) s.label = s.id;
     }
@@ -376,20 +391,178 @@
     `;
   }
 
-  function renderInbounds() {
-    const grid = $("inboundChips");
+  function mergedInbound(serverId, inbound) {
+    const o = ensureServer(serverId).inbounds[String(inbound.id)] || {};
+    return {
+      ...inbound,
+      remark: o.remark !== undefined ? o.remark : inbound.remark,
+      enable: o.enable !== undefined ? o.enable : inbound.enable,
+      _changed: Boolean(o._changed),
+    };
+  }
+
+  function patchInbound(ibId, patch) {
+    const bucket = ensureServer(activeServer);
+    const key = String(ibId);
+    bucket.inbounds[key] = { ...(bucket.inbounds[key] || {}), ...patch, _changed: true };
+    saveOverrides();
+    renderInboundList();
+    updatePendingBar();
+  }
+
+  function probeResultFor(serverId, email) {
+    const data = probes[serverId];
+    if (!data?.results) return null;
+    return data.results.find((r) => r.email === email) || null;
+  }
+
+  function renderViewTabs() {
+    document.querySelectorAll(".view-tab").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.view === viewMode);
+    });
+    $("clientsView").classList.toggle("hidden", viewMode !== "clients");
+    $("inboundsView").classList.toggle("hidden", viewMode !== "inbounds");
+    $("probesView").classList.toggle("hidden", viewMode !== "probes");
+  }
+
+  function renderInboundList() {
+    const grid = $("inboundList");
+    const rows = (servers[activeServer].inbounds || []).map((ib) => mergedInbound(activeServer, ib));
+    if (!rows.length) {
+      grid.innerHTML = '<div class="empty-state">Нет инбаундов</div>';
+      return;
+    }
     grid.innerHTML = "";
-    for (const ib of servers[activeServer].inbounds || []) {
+    for (const ib of rows) {
       const el = document.createElement("div");
-      el.className = "inbound-card";
+      el.className = "inbound-card" + (!ib.enable ? " disabled" : "") + (ib._changed ? " changed" : "");
+      const extras = [
+        ib.sni ? `SNI ${ib.sni}` : "",
+        ib.dest ? `dest ${ib.dest}` : "",
+        ib.xhttpPath ? `path ${ib.xhttpPath}` : "",
+      ].filter(Boolean).join(" · ");
       el.innerHTML = `
         <div class="port">:${ib.port}</div>
         <div class="name">${esc(ib.remark)}</div>
-        <div class="meta">${esc(ib.protocol)}${ib.enable ? "" : " · выкл"}</div>
+        <div class="meta">${esc(ib.protocol)} · id ${ib.id}${ib.enable ? "" : " · выкл"}</div>
         <span class="net-badge">${esc(ib.network || "tcp")} · ${esc(ib.security || "none")}</span>
+        ${extras ? `<div class="meta" style="margin-top:8px">${esc(extras)}</div>` : ""}
+        ${ib._changed ? '<span class="badge edit" style="margin-top:8px">изменён</span>' : ""}
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn sm" data-ib-edit="${ib.id}">Изменить</button>
+          <button class="btn sm" data-ib-toggle="${ib.id}">${ib.enable ? "Выкл" : "Вкл"}</button>
+        </div>
       `;
       grid.appendChild(el);
     }
+    grid.querySelectorAll("[data-ib-edit]").forEach((b) => b.onclick = () => openInboundEdit(Number(b.dataset.ibEdit)));
+    grid.querySelectorAll("[data-ib-toggle]").forEach((b) => {
+      const id = Number(b.dataset.ibToggle);
+      const base = servers[activeServer].inbounds.find((x) => x.id === id);
+      b.onclick = () => patchInbound(id, { enable: !mergedInbound(activeServer, base).enable });
+    });
+  }
+
+  function openInboundEdit(ibId) {
+    const base = servers[activeServer].inbounds.find((x) => x.id === ibId);
+    if (!base) return;
+    const ib = mergedInbound(activeServer, base);
+    editingInbound = { serverId: activeServer, id: ibId };
+    $("inboundTitle").textContent = `:${ib.port} · ${ib.remark}`;
+    $("inboundSubtitle").textContent = servers[activeServer].label;
+    $("inboundEnable").value = String(ib.enable);
+    $("inboundPort").value = String(ib.port);
+    $("inboundRemark").value = ib.remark || "";
+    $("inboundDetails").innerHTML = `
+      <div class="cell"><div class="k">Протокол</div><div class="v">${esc(ib.protocol)}</div></div>
+      <div class="cell"><div class="k">Сеть</div><div class="v">${esc(ib.network)}</div></div>
+      <div class="cell"><div class="k">Security</div><div class="v">${esc(ib.security || "—")}</div></div>
+      <div class="cell"><div class="k">Tag</div><div class="v">${esc(ib.tag || "—")}</div></div>
+    `;
+    $("inboundModal").classList.add("open");
+  }
+
+  function renderProbes() {
+    const list = $("probeList");
+    const probeData = probes[activeServer];
+    const clients = (servers[activeServer].clients || []).slice().sort((a, b) => a.email.localeCompare(b.email));
+    $("probeMeta").textContent = probeData?.probedAt
+      ? `Последний пинг: ${probeData.probedAt}${probeData.fullTunnel === false ? " (только xHTTP)" : ""}`
+      : "Пинг ещё не запускался — нажми «Пинг всех VPN»";
+
+    if (!clients.length) {
+      list.innerHTML = '<div class="empty-state">Нет клиентов</div>';
+      return;
+    }
+
+    list.innerHTML = "";
+    for (const c of clients) {
+      const pr = probeResultFor(activeServer, c.email);
+      const ok = pr?.ok;
+      const card = document.createElement("div");
+      card.className = "card" + (pr ? (ok ? " probe-ok" : " probe-bad") : "");
+      const tunnels = (pr?.tunnels || []).map((t) => {
+        const st = t.tunnel_ok ? "ok" : "bad";
+        const lat = t.latency_ms != null ? `${t.latency_ms} ms` : "—";
+        return `<span class="tunnel-chip ${st}">:${t.port} ${esc(t.type || "")} ${lat}</span>`;
+      }).join("");
+      card.innerHTML = `
+        <div class="card-head">
+          <div>
+            <div class="name">${esc(c.email)}</div>
+            <div class="submeta">${pr ? esc(pr.summary || (ok ? "OK" : "FAIL")) : "Нет данных"}</div>
+            ${pr?.issues?.length ? `<div class="submeta probe-issues">${esc(pr.issues.join("; "))}</div>` : ""}
+          </div>
+          <div class="badges">
+            ${pr ? `<span class="badge ${ok ? "on" : "off"}">${ok ? "OK" : "FAIL"}</span>` : ""}
+            ${pr ? `<span class="badge edit">${pr.tunnels_ok ?? 0}/${pr.tunnels_total ?? 0}</span>` : ""}
+          </div>
+        </div>
+        ${tunnels ? `<div class="tunnel-row">${tunnels}</div>` : ""}
+        <div class="btn-row">
+          <button class="btn sm primary" data-probe-one="${esc(c.email)}">Пинг</button>
+        </div>
+      `;
+      list.appendChild(card);
+    }
+    list.querySelectorAll("[data-probe-one]").forEach((b) => {
+      b.onclick = async () => {
+        try { await triggerProbe(activeServer, b.dataset.probeOne, "1"); }
+        catch (e) { toast(e.message || "Ошибка пинга", true); }
+      };
+    });
+  }
+
+  async function triggerProbe(serverId, email = "all", fullTunnel = "1") {
+    const { token, repo } = getGhCreds();
+    if (!token || token.startsWith("••")) {
+      $("githubModal").classList.add("open");
+      toast("Нужен GitHub token — открой ⚙", true);
+      return;
+    }
+    const label = email === "all" ? "всех VPN" : email;
+    toast(`Запуск пинга ${label}…`);
+    const res = await fetch(
+      `https://api.github.com/repos/${repo}/actions/workflows/probe-vpn.yml/dispatches`,
+      {
+        method: "POST",
+        headers: { ...ghHeaders(token), "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ref: "main",
+          inputs: { server: serverId, email, full_tunnel: fullTunnel },
+        }),
+      }
+    );
+    if (!res.ok && res.status !== 204) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(ghErrorMessage(err, res.status));
+    }
+    const mins = email === "all" ? "2–4" : "1–2";
+    toast(`Пинг запущен (~${mins} мин). Потом ↻ Синк или «Обновить данные»`);
+  }
+
+  function renderInbounds() {
+    renderInboundList();
   }
 
   function getFilteredClients() {
@@ -465,6 +638,7 @@
           <button class="btn sm" data-copy="${esc(c.subUrl || "")}">Копировать</button>
           <button class="btn sm" data-qr="${esc(c.subUrl || "")}" data-name="${esc(c.email)}">QR</button>
           <button class="btn sm" data-edit="${esc(c.email)}">Изменить</button>
+          <button class="btn sm" data-probe-client="${esc(c.email)}">Пинг</button>
           <button class="btn sm" data-toggle="${esc(c.email)}">${c.enable ? "Выкл" : "Вкл"}</button>
           <button class="btn sm" data-reset="${esc(c.email)}">Сброс ↓</button>
           <button class="btn sm danger" data-del="${esc(c.email)}">Удалить</button>
@@ -507,6 +681,12 @@
         renderClients();
         toast("Удаление в очереди");
       }
+    });
+    list.querySelectorAll("[data-probe-client]").forEach((b) => {
+      b.onclick = async () => {
+        try { await triggerProbe(activeServer, b.dataset.probeClient, "1"); }
+        catch (e) { toast(e.message || "Ошибка пинга", true); }
+      };
     });
   }
 
@@ -565,8 +745,10 @@
     if (activeServer !== "all") {
       renderServerHero();
       renderStats();
-      renderInbounds();
-      renderClients();
+      renderViewTabs();
+      if (viewMode === "clients") renderClients();
+      else if (viewMode === "inbounds") renderInboundList();
+      else if (viewMode === "probes") renderProbes();
     }
     updatePendingBar();
   }
@@ -728,6 +910,40 @@
     };
 
     $("logoutBtn").onclick = () => { sessionStorage.removeItem(SESSION_KEY); location.reload(); };
+
+    document.querySelectorAll(".view-tab").forEach((btn) => {
+      btn.onclick = () => {
+        viewMode = btn.dataset.view || "clients";
+        renderAll();
+      };
+    });
+
+    $("probeAllBtn").onclick = async () => {
+      if (activeServer === "all") { toast("Выберите сервер", true); return; }
+      try { await triggerProbe(activeServer, "all", "1"); }
+      catch (e) { toast(e.message || "Ошибка пинга", true); }
+    };
+    $("probeRefreshBtn").onclick = async () => {
+      try {
+        await loadData();
+        renderProbes();
+        toast("Данные обновлены");
+      } catch (e) {
+        toast(e.message || "Ошибка загрузки", true);
+      }
+    };
+
+    $("inboundCancel").onclick = () => $("inboundModal").classList.remove("open");
+    $("inboundSave").onclick = () => {
+      if (!editingInbound) return;
+      patchInbound(editingInbound.id, {
+        enable: $("inboundEnable").value === "true",
+        remark: $("inboundRemark").value.trim(),
+      });
+      $("inboundModal").classList.remove("open");
+      toast("Сохранено — нажми «Применить на серверах»");
+    };
+
     $("search").oninput = () => renderClients();
     $("filterSelect").onchange = () => renderClients();
     $("sortSelect").onchange = () => renderClients();
