@@ -70,12 +70,17 @@
   async function verifyPassword(password) {
     const salt = b64ToBytes(authConfig.salt);
     const expected = b64ToBytes(authConfig.hash);
-    const key = await crypto.subtle.importKey(
-      "raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]
+    const keyMaterial = await crypto.subtle.importKey(
+      "raw",
+      new TextEncoder().encode(password),
+      { name: "PBKDF2" },
+      false,
+      ["deriveBits"]
     );
     const bits = await crypto.subtle.deriveBits(
       { name: "PBKDF2", salt, iterations: authConfig.iterations, hash: "SHA-256" },
-      key, 256
+      keyMaterial,
+      256
     );
     const got = new Uint8Array(bits);
     if (got.length !== expected.length) return false;
@@ -557,7 +562,7 @@
   }
 
   async function init() {
-    authConfig = await fetch("auth.json").then((r) => r.json());
+    authConfig = await fetch(`auth.json?t=${Date.now()}`).then((r) => r.json());
     if (sessionStorage.getItem(SESSION_KEY) === "1") {
       try { await enterApp(); } catch (e) { toast("Ошибка загрузки: " + e.message, true); }
     }
