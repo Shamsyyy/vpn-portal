@@ -1,12 +1,4 @@
 {
-  "updatedAt": "2026-07-13T09:31:18.886Z",
-  "servers": {
-    "shm137": {
-      "create": [
-        {
-          "email": "test1"
-        }
-      ]
-    }
-  }
+  "updatedAt": "2026-07-13T12:45:00Z",
+  "servers": {}
 }

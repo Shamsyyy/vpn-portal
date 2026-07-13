@@ -50,6 +50,10 @@ jobs:
           SSH_PASS_EVKA: ${{ secrets.SSH_PASS_EVKA }}
         run: python3 scripts/export_portal_data_ci.py
 
+      - name: Clear applied overrides queue
+        run: |
+          python3 -c "import json, datetime; from pathlib import Path; p=Path('data/overrides.json'); p.parent.mkdir(exist_ok=True); p.write_text(json.dumps({'updatedAt': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'), 'servers': {}}, indent=2)+'\n', encoding='utf-8')"
+
       - name: Commit refreshed data
         run: |
           git config user.name "github-actions[bot]"

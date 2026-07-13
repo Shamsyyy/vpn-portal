@@ -64,6 +64,50 @@
     updatePendingBar();
   }
 
+  function pruneEmptyServers() {
+    for (const [sid, bucket] of Object.entries(overrides)) {
+      const empty =
+        !Object.keys(bucket.clients || {}).length &&
+        !Object.keys(bucket.inbounds || {}).length &&
+        !(bucket.create || []).length &&
+        !(bucket.resetTraffic || []).length &&
+        !(bucket.delete || []).length;
+      if (empty) delete overrides[sid];
+    }
+  }
+
+  /** Remove from local queue exactly what was submitted to GitHub Actions. */
+  function clearSubmittedOverrides(payload) {
+    for (const [sid, slice] of Object.entries(payload.servers || {})) {
+      const bucket = ensureServer(sid);
+      if (slice.clients) {
+        for (const email of Object.keys(slice.clients)) {
+          const patch = bucket.clients[email];
+          if (!patch) continue;
+          if (patch.note) bucket.clients[email] = { note: patch.note };
+          else delete bucket.clients[email];
+        }
+      }
+      if (slice.inbounds) {
+        for (const ibId of Object.keys(slice.inbounds)) {
+          delete bucket.inbounds[ibId];
+        }
+      }
+      if (slice.resetTraffic?.length) {
+        bucket.resetTraffic = bucket.resetTraffic.filter((e) => !slice.resetTraffic.includes(e));
+      }
+      if (slice.delete?.length) {
+        bucket.delete = bucket.delete.filter((e) => !slice.delete.includes(e));
+      }
+      if (slice.create?.length) {
+        const sent = new Set(slice.create.map((x) => (x.email || x)));
+        bucket.create = bucket.create.filter((x) => !sent.has(x.email || x));
+      }
+    }
+    pruneEmptyServers();
+    saveOverrides();
+  }
+
   function b64ToBytes(b64) {
     const bin = atob(b64);
     const out = new Uint8Array(bin.length);
@@ -255,12 +299,20 @@
 
   async function loadData() {
     const ts = Date.now();
+    const fetchJson = (url) =>
+      fetch(url, { cache: "no-store" }).then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+        return r.json();
+      });
+    const fetchOptional = (url) =>
+      fetch(url, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+
     const [m, s1, s2, p1, p2] = await Promise.all([
-      fetch(`data/manifest.json?t=${ts}`).then((r) => r.json()),
-      fetch(`data/shm137.json?t=${ts}`).then((r) => r.json()),
-      fetch(`data/evka.json?t=${ts}`).then((r) => r.json()),
-      fetch(`data/probes/shm137.json?t=${ts}`).then((r) => (r.ok ? r.json() : null)).catch(() => null),
-      fetch(`data/probes/evka.json?t=${ts}`).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      fetchJson(`data/manifest.json?t=${ts}`),
+      fetchJson(`data/shm137.json?t=${ts}`),
+      fetchJson(`data/evka.json?t=${ts}`),
+      fetchOptional(`data/probes/shm137.json?t=${ts}`),
+      fetchOptional(`data/probes/evka.json?t=${ts}`),
     ]);
     manifest = m;
     servers = { shm137: s1, evka: s2 };
@@ -777,6 +829,64 @@
     return btoa(binary);
   }
 
+  async function waitForWorkflow(token, repo, workflowFile, startedAtMs, timeoutMs = 240000) {
+    const url = `https://api.github.com/repos/${repo}/actions/workflows/${workflowFile}/runs?per_page=8`;
+    const deadline = Date.now() + timeoutMs;
+    while (Date.now() < deadline) {
+      const res = await fetch(url, { headers: ghHeaders(token) });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(ghErrorMessage(err, res.status));
+      }
+      const data = await res.json();
+      const run = (data.workflow_runs || []).find(
+        (r) => new Date(r.created_at).getTime() >= startedAtMs - 8000
+      );
+      if (run) {
+        if (run.status === "completed") {
+          if (run.conclusion === "success") return run;
+          throw new Error(`Операция не удалась (${run.conclusion}). Смотри Actions в GitHub.`);
+        }
+      }
+      await new Promise((r) => setTimeout(r, 5000));
+    }
+    throw new Error("Таймаут ожидания GitHub Actions (4 мин). Проверь Actions и нажми ↻ Синк позже.");
+  }
+
+  async function reloadDataUntilFresh(before, maxAttempts = 12) {
+    for (let i = 0; i < maxAttempts; i++) {
+      await loadData();
+      const fresh =
+        (manifest?.updatedAt && manifest.updatedAt !== before.manifestAt) ||
+        (servers.shm137?.exportedAt && servers.shm137.exportedAt !== before.shmAt) ||
+        (servers.evka?.exportedAt && servers.evka.exportedAt !== before.evkaAt);
+      if (fresh) return true;
+      await new Promise((r) => setTimeout(r, 6000));
+    }
+    await loadData();
+    return false;
+  }
+
+  function dataSnapshot() {
+    return {
+      manifestAt: manifest?.updatedAt || "",
+      shmAt: servers.shm137?.exportedAt || "",
+      evkaAt: servers.evka?.exportedAt || "",
+    };
+  }
+
+  function setBusyButton(btn, busy, busyLabel) {
+    if (!btn) return;
+    if (busy) {
+      btn.dataset.prevLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = busyLabel;
+    } else {
+      btn.disabled = false;
+      btn.textContent = btn.dataset.prevLabel || btn.textContent;
+    }
+  }
+
   function ghErrorMessage(err, status) {
     const msg = err?.message || "";
     if (status === 401 || status === 403) {
@@ -847,25 +957,40 @@
       throw new Error("GitHub token не задан. Открой ⚙ и вставь ghp_…");
     }
 
+    const before = dataSnapshot();
+    const startedAt = Date.now();
+
     try {
       await pushOverridesViaWorkflow(token, repo, payload);
-    } catch (wfErr) {
+    } catch {
       await pushOverridesViaContents(token, repo, payload);
     }
 
-    toast("Отправлено! Применение на серверах ~1–2 мин. Потом нажми ↻ Синк");
+    toast("Применение на серверах…");
+    await waitForWorkflow(token, repo, "apply-changes.yml", startedAt);
+    clearSubmittedOverrides(payload);
+    const fresh = await reloadDataUntilFresh(before);
+    renderAll();
+    toast(fresh ? "Изменения применены, данные обновлены" : "Применено. Если данные старые — ↻ Синк через минуту");
   }
 
   async function triggerSync(token, repo) {
+    const before = dataSnapshot();
+    const startedAt = Date.now();
     const res = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/sync-data.yml/dispatches`, {
       method: "POST",
       headers: { ...ghHeaders(token), "Content-Type": "application/json" },
       body: JSON.stringify({ ref: "main" }),
     });
     if (!res.ok && res.status !== 204) {
-      throw new Error("Не удалось запустить синк");
+      const err = await res.json().catch(() => ({}));
+      throw new Error(ghErrorMessage(err, res.status) || "Не удалось запустить синк");
     }
-    toast("Синк запущен. Обнови страницу через 1–2 мин");
+    toast("Синк запущен…");
+    await waitForWorkflow(token, repo, "sync-data.yml", startedAt);
+    const fresh = await reloadDataUntilFresh(before);
+    renderAll();
+    toast(fresh ? "Данные синхронизированы" : "Синк завершён. Обнови страницу через минуту, если даты не изменились");
   }
 
   function getGhCreds() {
@@ -1008,23 +1133,32 @@
         return;
       }
       const btn = $("applyGithubBtn");
-      const label = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = "Отправка…";
+      setBusyButton(btn, true, "Применение…");
       try {
         await pushOverrides(token, repo);
       } catch (e) {
-        toast(e.message || "Ошибка отправки", true);
+        toast(e.message || "Ошибка применения", true);
       } finally {
-        btn.disabled = false;
-        btn.textContent = label;
+        setBusyButton(btn, false);
       }
     };
 
     $("syncGithubBtn").onclick = async () => {
       const { token, repo } = getGhCreds();
-      if (!token) { $("githubModal").classList.add("open"); return; }
-      try { await triggerSync(token, repo); } catch (e) { toast(e.message, true); }
+      if (!token || token.startsWith("••")) {
+        $("githubModal").classList.add("open");
+        toast("Нужен GitHub token — открой ⚙", true);
+        return;
+      }
+      const btn = $("syncGithubBtn");
+      setBusyButton(btn, true, "Синк…");
+      try {
+        await triggerSync(token, repo);
+      } catch (e) {
+        toast(e.message || "Ошибка синка", true);
+      } finally {
+        setBusyButton(btn, false);
+      }
     };
 
     $("settingsBtn").onclick = () => $("githubModal").classList.add("open");
