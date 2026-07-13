@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-13T09:52:15Z",
+  "exportedAt": "2026-07-13T10:00:24Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -192,6 +192,22 @@
       "online": false
     },
     {
+      "email": "qwerty",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "997e2264-21b1-4f3c-aeee-969bd6dca283",
+      "uuid": "21",
+      "subUrl": "https://89.125.59.150:31289/shm137/997e2264-21b1-4f3c-aeee-969bd6dca283",
+      "up": 0,
+      "down": 0,
+      "upHuman": "0 B",
+      "downHuman": "0 B",
+      "lastOnline": 0,
+      "online": false
+    },
+    {
       "email": "random",
       "enable": true,
       "expiryTime": 0,
@@ -216,11 +232,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 6434915849,
-      "down": 186689254282,
+      "up": 6436394434,
+      "down": 186691648144,
       "upHuman": "6.0 GB",
       "downHuman": "173.9 GB",
-      "lastOnline": 1783936334025,
+      "lastOnline": 1783936819007,
       "online": true
     },
     {
@@ -451,27 +467,42 @@
       "clientId": 18,
       "inboundId": 6,
       "flowOverride": ""
+    },
+    {
+      "clientId": 21,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 21,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 21,
+      "inboundId": 6,
+      "flowOverride": ""
     }
   ],
   "totals": {
-    "up": 11430100350,
-    "down": 306912919493,
+    "up": 11431578935,
+    "down": 306915313355,
     "upHuman": "10.6 GB",
     "downHuman": "285.8 GB",
     "online": 1,
-    "enabled": 13
+    "enabled": 14
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 2814000,
+    "uptimeSec": 2814489,
     "load": [
-      "0.01",
-      "0.04",
-      "0.01"
+      "0.00",
+      "0.00",
+      "0.00"
     ],
-    "memUsedMb": 680,
+    "memUsedMb": 692,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  4.3 us,  4.3 sy,  0.0 ni, 91.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  0.0 us,  4.5 sy,  0.0 ni, 90.9 id,  0.0 wa,  0.0 hi,  0.0 si,  4.5 st "
   },
   "id": "shm137",
   "name": "shm137",
