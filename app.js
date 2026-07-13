@@ -284,6 +284,8 @@
     }
     return `${n.toFixed(1)} PB`;
   }
+
+  function serverAccent(id) {
     return id === "evka" ? "var(--evka)" : "var(--shm)";
   }
 
@@ -648,7 +650,7 @@
       const btn = $("togglePassword");
       const show = input.type === "password";
       input.type = show ? "text" : "password";
-      btn.textContent = show ? "🙈" : "👁";
+      btn.textContent = show ? "Скрыть" : "Показать";
       btn.title = show ? "Скрыть пароль" : "Показать пароль";
       btn.setAttribute("aria-label", btn.title);
     };
