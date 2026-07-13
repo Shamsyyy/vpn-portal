@@ -108,6 +108,121 @@
     saveOverrides();
   }
 
+  function purgeActionableOverrides() {
+    let dirty = false;
+    for (const sid of Object.keys(overrides)) {
+      const bucket = overrides[sid];
+      const notes = {};
+      for (const [email, patch] of Object.entries(bucket.clients || {})) {
+        if (patch.note) notes[email] = { note: patch.note };
+      }
+      const hadQueue =
+        (bucket.create || []).length ||
+        (bucket.delete || []).length ||
+        (bucket.resetTraffic || []).length ||
+        Object.keys(bucket.inbounds || {}).some((id) => bucket.inbounds[id]._changed) ||
+        Object.values(bucket.clients || {}).some((p) => p._changed);
+      if (hadQueue) dirty = true;
+      overrides[sid] = {
+        clients: notes,
+        inbounds: {},
+        create: [],
+        resetTraffic: [],
+        delete: [],
+      };
+    }
+    if (dirty) {
+      pruneEmptyServers();
+      saveOverrides();
+    }
+  }
+
+  function reconcileOverridesWithServer() {
+    let dirty = false;
+    for (const [sid, bucket] of Object.entries(overrides)) {
+      const srv = servers[sid];
+      if (!srv) continue;
+      const byEmail = new Map((srv.clients || []).map((c) => [c.email, c]));
+      const byIbId = new Map((srv.inbounds || []).map((ib) => [String(ib.id), ib]));
+
+      const nextCreate = (bucket.create || []).filter((item) => !byEmail.has(item.email || item));
+      if (nextCreate.length !== (bucket.create || []).length) {
+        bucket.create = nextCreate;
+        dirty = true;
+      }
+
+      const nextDelete = (bucket.delete || []).filter((email) => byEmail.has(email));
+      if (nextDelete.length !== (bucket.delete || []).length) {
+        bucket.delete = nextDelete;
+        dirty = true;
+      }
+
+      for (const [email, patch] of Object.entries({ ...(bucket.clients || {}) })) {
+        if (!patch._changed) continue;
+        const base = byEmail.get(email);
+        if (!base) continue;
+        const fields = ["enable", "totalGB", "expiryTime", "limitIp"];
+        const matches = fields.every((f) => patch[f] === undefined || patch[f] === base[f]);
+        if (matches) {
+          if (patch.note) bucket.clients[email] = { note: patch.note };
+          else delete bucket.clients[email];
+          dirty = true;
+        }
+      }
+
+      for (const [ibId, patch] of Object.entries({ ...(bucket.inbounds || {}) })) {
+        if (!patch._changed) continue;
+        const base = byIbId.get(String(ibId));
+        if (!base) continue;
+        const matches =
+          (patch.enable === undefined || patch.enable === base.enable) &&
+          (patch.remark === undefined || patch.remark === base.remark);
+        if (matches) {
+          delete bucket.inbounds[ibId];
+          dirty = true;
+        }
+      }
+    }
+    if (dirty) {
+      pruneEmptyServers();
+      saveOverrides();
+    }
+  }
+
+  function countRemoteOverrides(data) {
+    let n = 0;
+    for (const bucket of Object.values(data?.servers || {})) {
+      n += Object.keys(bucket.clients || {}).length;
+      n += Object.keys(bucket.inbounds || {}).length;
+      n += (bucket.create || []).length;
+      n += (bucket.delete || []).length;
+      n += (bucket.resetTraffic || []).length;
+    }
+    return n;
+  }
+
+  async function syncQueueFromRemote(token, repo) {
+    if (!token || token.startsWith("••")) return;
+    try {
+      const remote = await fetchGhRepoJson(token, repo, "data/overrides.json");
+      if (!remote) return;
+      if (countRemoteOverrides(remote) === 0 && pendingPayload().count > 0) {
+        purgeActionableOverrides();
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function normalizeServerLabels() {
+    for (const s of manifest?.servers || []) {
+      if (s.label?.includes("router")) s.label = s.id;
+    }
+    for (const id of Object.keys(servers)) {
+      if (servers[id].label?.includes("router")) servers[id].label = id;
+    }
+  }
+
   function b64ToBytes(b64) {
     const bin = atob(b64);
     const out = new Uint8Array(bin.length);
@@ -297,32 +412,67 @@
     $("pendingCount").textContent = count ? `(${count})` : "";
   }
 
-  async function loadData() {
+  async function loadData(options = {}) {
+    const preferRemote = options.preferRemote !== false;
+    const repo = localStorage.getItem(GH_REPO_KEY) || $("ghRepo")?.value?.trim() || DEFAULT_REPO;
+    const token = sessionStorage.getItem(GH_TOKEN_KEY) || $("ghToken")?.value?.trim() || "";
     const ts = Date.now();
-    const fetchJson = (url) =>
+
+    const fetchLocalJson = (url) =>
       fetch(url, { cache: "no-store" }).then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
         return r.json();
       });
-    const fetchOptional = (url) =>
+    const fetchLocalOptional = (url) =>
       fetch(url, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
 
-    const [m, s1, s2, p1, p2] = await Promise.all([
-      fetchJson(`data/manifest.json?t=${ts}`),
-      fetchJson(`data/shm137.json?t=${ts}`),
-      fetchJson(`data/evka.json?t=${ts}`),
-      fetchOptional(`data/probes/shm137.json?t=${ts}`),
-      fetchOptional(`data/probes/evka.json?t=${ts}`),
-    ]);
-    manifest = m;
-    servers = { shm137: s1, evka: s2 };
-    probes = { shm137: p1, evka: p2 };
-    for (const s of manifest.servers || []) {
-      if (s.label?.includes("router")) s.label = s.id;
+    const loadFromUrls = async (base, prefix) => {
+      const p = (path) => `${base}${prefix}${path}?t=${ts}`;
+      const [m, s1, s2, p1, p2] = await Promise.all([
+        fetchLocalJson(p("data/manifest.json")),
+        fetchLocalJson(p("data/shm137.json")),
+        fetchLocalJson(p("data/evka.json")),
+        fetchLocalOptional(p("data/probes/shm137.json")),
+        fetchLocalOptional(p("data/probes/evka.json")),
+      ]);
+      return { m, s1, s2, p1, p2 };
+    };
+
+    const sources = [];
+    if (preferRemote && token && !token.startsWith("••")) sources.push("api");
+    if (preferRemote) sources.push("raw");
+    sources.push("local");
+
+    let lastErr = null;
+    for (const src of sources) {
+      try {
+        let m, s1, s2, p1, p2;
+        if (src === "api") {
+          [m, s1, s2, p1, p2] = await Promise.all([
+            fetchGhRepoJson(token, repo, "data/manifest.json"),
+            fetchGhRepoJson(token, repo, "data/shm137.json"),
+            fetchGhRepoJson(token, repo, "data/evka.json"),
+            fetchGhRepoJson(token, repo, "data/probes/shm137.json"),
+            fetchGhRepoJson(token, repo, "data/probes/evka.json"),
+          ]);
+          if (!m || !s1 || !s2) throw new Error("incomplete GitHub API payload");
+        } else if (src === "raw") {
+          ({ m, s1, s2, p1, p2 } = await loadFromUrls(`https://raw.githubusercontent.com/${repo}/main`, ""));
+        } else {
+          ({ m, s1, s2, p1, p2 } = await loadFromUrls("", ""));
+        }
+        manifest = m;
+        servers = { shm137: s1, evka: s2 };
+        probes = { shm137: p1, evka: p2 };
+        normalizeServerLabels();
+        if (token && !token.startsWith("••")) await syncQueueFromRemote(token, repo);
+        reconcileOverridesWithServer();
+        return src;
+      } catch (e) {
+        lastErr = e;
+      }
     }
-    for (const id of Object.keys(servers)) {
-      if (servers[id].label?.includes("router")) servers[id].label = id;
-    }
+    throw lastErr || new Error("Не удалось загрузить данные");
   }
 
   function serverTotals(s) {
@@ -853,17 +1003,42 @@
     throw new Error("Таймаут ожидания GitHub Actions (4 мин). Проверь Actions и нажми ↻ Синк позже.");
   }
 
-  async function reloadDataUntilFresh(before, maxAttempts = 12) {
+  async function fetchGhRepoJson(token, repo, path) {
+    const res = await fetch(
+      `https://api.github.com/repos/${repo}/contents/${path}?ref=main`,
+      { headers: ghHeaders(token), cache: "no-store" }
+    );
+    if (res.status === 404) return null;
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(ghErrorMessage(err, res.status));
+    }
+    const meta = await res.json();
+    if (meta.content) {
+      const bin = atob(meta.content.replace(/\n/g, ""));
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return JSON.parse(new TextDecoder().decode(bytes));
+    }
+    if (meta.download_url) {
+      const dl = await fetch(meta.download_url, { cache: "no-store" });
+      if (!dl.ok) return null;
+      return dl.json();
+    }
+    return null;
+  }
+
+  async function reloadDataUntilFresh(before, maxAttempts = 15) {
     for (let i = 0; i < maxAttempts; i++) {
-      await loadData();
+      await loadData({ preferRemote: true });
       const fresh =
         (manifest?.updatedAt && manifest.updatedAt !== before.manifestAt) ||
         (servers.shm137?.exportedAt && servers.shm137.exportedAt !== before.shmAt) ||
         (servers.evka?.exportedAt && servers.evka.exportedAt !== before.evkaAt);
       if (fresh) return true;
-      await new Promise((r) => setTimeout(r, 6000));
+      await new Promise((r) => setTimeout(r, 5000));
     }
-    await loadData();
+    await loadData({ preferRemote: true });
     return false;
   }
 
@@ -966,12 +1141,25 @@
       await pushOverridesViaContents(token, repo, payload);
     }
 
-    toast("Применение на серверах…");
-    await waitForWorkflow(token, repo, "apply-changes.yml", startedAt);
+    // Clear local queue immediately — do not wait on Actions poll (often fails without actions:read).
     clearSubmittedOverrides(payload);
-    const fresh = await reloadDataUntilFresh(before);
     renderAll();
-    toast(fresh ? "Изменения применены, данные обновлены" : "Применено. Если данные старые — ↻ Синк через минуту");
+    toast("Применение на серверах…");
+
+    try {
+      await waitForWorkflow(token, repo, "apply-changes.yml", startedAt);
+      const fresh = await reloadDataUntilFresh(before);
+      renderAll();
+      toast(fresh ? "Изменения применены, данные обновлены" : "Применено. Данные подтянутся через минуту");
+    } catch (e) {
+      toast((e.message || "Workflow") + " Очередь локально очищена — проверь Actions.", true);
+      try {
+        await loadData({ preferRemote: true });
+        renderAll();
+      } catch {
+        /* ignore */
+      }
+    }
   }
 
   async function triggerSync(token, repo) {
@@ -987,10 +1175,20 @@
       throw new Error(ghErrorMessage(err, res.status) || "Не удалось запустить синк");
     }
     toast("Синк запущен…");
-    await waitForWorkflow(token, repo, "sync-data.yml", startedAt);
-    const fresh = await reloadDataUntilFresh(before);
-    renderAll();
-    toast(fresh ? "Данные синхронизированы" : "Синк завершён. Обнови страницу через минуту, если даты не изменились");
+    try {
+      await waitForWorkflow(token, repo, "sync-data.yml", startedAt);
+      const fresh = await reloadDataUntilFresh(before);
+      renderAll();
+      toast(fresh ? "Данные синхронизированы" : "Синк завершён, но даты не изменились — возможно данные уже актуальны");
+    } catch (e) {
+      toast((e.message || "Синк") + " Попробуй ↻ Синк ещё раз или обнови страницу.", true);
+      try {
+        await loadData({ preferRemote: true });
+        renderAll();
+      } catch {
+        /* ignore */
+      }
+    }
   }
 
   function getGhCreds() {
@@ -1050,8 +1248,9 @@
     };
     $("probeRefreshBtn").onclick = async () => {
       try {
-        await loadData();
+        await loadData({ preferRemote: true });
         renderProbes();
+        renderClients();
         toast("Данные обновлены");
       } catch (e) {
         toast(e.message || "Ошибка загрузки", true);

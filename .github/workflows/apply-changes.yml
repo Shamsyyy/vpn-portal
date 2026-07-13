@@ -10,6 +10,10 @@ on:
         description: Base64-encoded overrides JSON from portal
         required: false
 
+concurrency:
+  group: portal-data-push
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -61,4 +65,5 @@ jobs:
           git add data/
           if git diff --staged --quiet; then exit 0; fi
           git commit -m "chore: refresh data after apply"
+          git pull --rebase origin main
           git push

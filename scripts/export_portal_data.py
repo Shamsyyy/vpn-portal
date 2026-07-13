@@ -142,10 +142,11 @@ print(json.dumps({
 
 
 def ssh_password(server_id: str, dashboard_cfg: dict) -> str:
+    import os
     if server_id == "shm137":
-        return dashboard_cfg.get("ssh_password") or r"#m=C}Dv)f3Qc^f:fMhh5e94QbiWjJh:g"
+        return os.environ.get("SSH_PASS_SHM") or dashboard_cfg.get("ssh_password") or ""
     if server_id == "evka":
-        return "y4M4NQbaR8ork55BJ8"
+        return os.environ.get("SSH_PASS_EVKA") or ""
     raise ValueError(server_id)
 
 
