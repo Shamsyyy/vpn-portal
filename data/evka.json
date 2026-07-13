@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-13T09:32:30Z",
+  "exportedAt": "2026-07-13T09:33:16Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -56,11 +56,11 @@
       "subId": "ecf9ba43-55a0-421a-a4fc-225b78335898",
       "uuid": "37",
       "subUrl": "https://78.17.4.178:31289/shm137/ecf9ba43-55a0-421a-a4fc-225b78335898",
-      "up": 8336577407,
-      "down": 32815845551,
+      "up": 8336584035,
+      "down": 32815851237,
       "upHuman": "7.8 GB",
       "downHuman": "30.6 GB",
-      "lastOnline": 1783935135024,
+      "lastOnline": 1783935195026,
       "online": true
     },
     {
@@ -121,10 +121,10 @@
       "uuid": "40",
       "subUrl": "https://78.17.4.178:31289/shm137/b4678471-05be-4666-945c-be775b434e41",
       "up": 1325721317,
-      "down": 20464514377,
+      "down": 20464514425,
       "upHuman": "1.2 GB",
       "downHuman": "19.1 GB",
-      "lastOnline": 1783935105008,
+      "lastOnline": 1783935195026,
       "online": true
     },
     {
@@ -173,7 +173,7 @@
       "upHuman": "1.8 GB",
       "downHuman": "46.1 GB",
       "lastOnline": 1783934865024,
-      "online": true
+      "online": false
     },
     {
       "email": "Kolya-evka",
@@ -280,11 +280,11 @@
       "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
       "uuid": "25",
       "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
-      "up": 363747385,
+      "up": 363747537,
       "down": 7704266851,
       "upHuman": "346.9 MB",
       "downHuman": "7.2 GB",
-      "lastOnline": 1783935110037,
+      "lastOnline": 1783935175040,
       "online": true
     },
     {
@@ -640,24 +640,24 @@
     }
   ],
   "totals": {
-    "up": 14321873226,
-    "down": 138472620914,
+    "up": 14321880006,
+    "down": 138472626648,
     "upHuman": "13.3 GB",
     "downHuman": "129.0 GB",
-    "online": 5,
+    "online": 4,
     "enabled": 19
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 340307,
+    "uptimeSec": 340354,
     "load": [
-      "0.11",
-      "0.04",
+      "0.05",
+      "0.03",
       "0.05"
     ],
-    "memUsedMb": 358,
+    "memUsedMb": 362,
     "memTotalMb": 3911,
-    "cpuHint": "%Cpu(s):  9.4 us,  3.1 sy,  0.0 ni, 81.2 id,  0.0 wa,  0.0 hi,  3.1 si,  3.1 st"
+    "cpuHint": "%Cpu(s):  0.0 us,  3.3 sy,  0.0 ni, 93.3 id,  0.0 wa,  0.0 hi,  0.0 si,  3.3 st"
   },
   "id": "evka",
   "name": "evka",
