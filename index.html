@@ -2,97 +2,179 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VPN Portal — shm137 + evka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <title>VPN Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
   <div id="loginScreen" class="login-wrap">
-    <div class="login-card">
-      <h1>VPN Portal</h1>
-      <p>Данные с shm137 и evka. Вход по паролю.</p>
+    <div class="login-card glass">
+      <div class="brand">
+        <div class="brand-icon">🛡️</div>
+        <div>
+          <h1>VPN Portal</h1>
+          <p>shm137 · evka</p>
+        </div>
+      </div>
+      <p class="login-hint">Единая панель клиентов и подписок. Доступ по паролю.</p>
       <div id="loginError" class="login-error"></div>
       <label for="password">Пароль</label>
-      <input id="password" type="password" autocomplete="current-password" placeholder="Пароль" />
-      <button id="loginBtn" class="primary" style="width:100%">Войти</button>
+      <input id="password" type="password" autocomplete="current-password" placeholder="Введите пароль" />
+      <button id="loginBtn" class="btn primary full">Войти</button>
     </div>
   </div>
 
   <div id="app" class="hidden">
-    <div class="wrap">
-      <header class="top">
-        <div>
-          <h1>VPN Portal</h1>
-          <div id="syncMeta" class="meta-line">Загрузка…</div>
+    <header class="app-header glass">
+      <div class="header-inner">
+        <div class="brand compact">
+          <div class="brand-icon sm">🛡️</div>
+          <div>
+            <h1>VPN Portal</h1>
+            <div id="syncMeta" class="meta-line">—</div>
+          </div>
         </div>
-        <button id="logoutBtn">Выйти</button>
-      </header>
+        <div class="header-actions">
+          <button id="syncGithubBtn" class="btn ghost" title="Запросить обновление данных">↻ Синк</button>
+          <button id="settingsBtn" class="btn ghost">⚙</button>
+          <button id="logoutBtn" class="btn ghost">Выйти</button>
+        </div>
+      </div>
+    </header>
 
-      <div id="pendingBar" class="pending-bar">
-        <strong>Есть несохранённые изменения</strong>
-        <span id="pendingCount"></span>
-        <div class="btn-row" style="margin-top:10px">
-          <button id="saveLocalBtn" class="success">Сохранить локально</button>
-          <button id="exportChangesBtn">Скачать changes.json</button>
-          <button id="applyGithubBtn" class="primary">Применить на серверах (GitHub)</button>
-          <button id="discardBtn" class="danger">Отменить</button>
+    <main class="wrap">
+      <div id="pendingBar" class="pending-bar glass">
+        <div class="pending-head">
+          <span class="pulse"></span>
+          <strong>Несохранённые изменения</strong>
+          <span id="pendingCount"></span>
+        </div>
+        <div class="btn-row">
+          <button id="applyGithubBtn" class="btn primary">Применить на серверах</button>
+          <button id="exportChangesBtn" class="btn">Скачать JSON</button>
+          <button id="discardBtn" class="btn danger">Отменить всё</button>
         </div>
       </div>
 
-      <div class="tabs" id="serverTabs"></div>
+      <nav class="tabs" id="serverTabs"></nav>
 
-      <div id="stats" class="stats"></div>
-      <div id="inboundChips" class="inbound-chips"></div>
+      <section id="overviewPanel" class="overview-panel hidden"></section>
 
-      <div class="toolbar">
-        <input id="search" class="search" type="search" placeholder="Поиск клиента…" />
-        <button id="refreshBtn">Обновить данные</button>
-        <button id="copySubBtn">Копировать подписку</button>
-      </div>
+      <section id="serverPanel">
+        <div class="server-hero" id="serverHero"></div>
+        <div id="stats" class="stats"></div>
+        <div id="inboundChips" class="inbound-grid"></div>
 
-      <div id="clientList" class="client-list"></div>
-    </div>
+        <div class="toolbar glass">
+          <input id="search" class="search" type="search" placeholder="Поиск клиента…" />
+          <select id="filterSelect" class="select compact">
+            <option value="all">Все</option>
+            <option value="online">Онлайн</option>
+            <option value="enabled">Активные</option>
+            <option value="disabled">Выключенные</option>
+            <option value="changed">Изменённые</option>
+          </select>
+          <select id="sortSelect" class="select compact">
+            <option value="name">По имени</option>
+            <option value="traffic">По трафику</option>
+            <option value="expiry">По сроку</option>
+          </select>
+          <button id="addClientBtn" class="btn primary">+ Клиент</button>
+        </div>
+
+        <div id="clientList" class="client-list"></div>
+      </section>
+    </main>
   </div>
 
+  <!-- Edit -->
   <div id="editModal" class="modal-back">
-    <div class="modal">
-      <h3 id="editTitle">Редактировать</h3>
-      <p id="editSubtitle"></p>
-      <label>Статус</label>
-      <select id="editEnable">
-        <option value="true">Включён</option>
-        <option value="false">Выключен</option>
-      </select>
-      <label>Лимит трафика (GB, 0 = безлимит)</label>
-      <input id="editTotalGB" type="number" min="0" step="1" />
-      <label>Срок (дата, пусто = без срока)</label>
-      <input id="editExpiry" type="date" />
+    <div class="modal glass">
+      <h3 id="editTitle">Клиент</h3>
+      <p id="editSubtitle" class="modal-sub"></p>
+      <div class="form-grid">
+        <div>
+          <label>Статус</label>
+          <select id="editEnable">
+            <option value="true">Включён</option>
+            <option value="false">Выключен</option>
+          </select>
+        </div>
+        <div>
+          <label>Лимит IP (0 = ∞)</label>
+          <input id="editLimitIp" type="number" min="0" step="1" />
+        </div>
+        <div>
+          <label>Лимит трафика (GB)</label>
+          <input id="editTotalGB" type="number" min="0" step="1" />
+        </div>
+        <div>
+          <label>Срок действия</label>
+          <input id="editExpiry" type="date" />
+        </div>
+      </div>
       <label>Заметка (только в портале)</label>
       <input id="editNote" type="text" placeholder="Комментарий" />
       <div class="modal-actions">
-        <button id="editCancel">Отмена</button>
-        <button id="editSave" class="primary">Сохранить</button>
+        <button id="editCancel" class="btn">Отмена</button>
+        <button id="editSave" class="btn primary">Сохранить</button>
       </div>
     </div>
   </div>
 
-  <div id="githubModal" class="modal-back">
-    <div class="modal">
-      <h3>Применить через GitHub</h3>
-      <p>Сохранит <code>data/overrides.json</code> в репозиторий и запустит Action для применения на серверах. Нужен GitHub Personal Access Token с правом <code>repo</code>.</p>
-      <label>GitHub Token</label>
-      <input id="ghToken" type="password" autocomplete="off" placeholder="ghp_…" />
-      <label>owner/repo</label>
-      <input id="ghRepo" type="text" placeholder="username/vpn-portal" />
+  <!-- Add client -->
+  <div id="addModal" class="modal-back">
+    <div class="modal glass">
+      <h3>Новый клиент</h3>
+      <p class="modal-sub">Будет создан на сервере <span id="addServerLabel"></span> после применения изменений.</p>
+      <label>Имя (email в панели)</label>
+      <input id="addEmail" type="text" placeholder="например: mama-phone" />
       <div class="modal-actions">
-        <button id="ghCancel">Отмена</button>
-        <button id="ghSubmit" class="primary">Отправить</button>
+        <button id="addCancel" class="btn">Отмена</button>
+        <button id="addSave" class="btn primary">Добавить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR -->
+  <div id="qrModal" class="modal-back">
+    <div class="modal glass qr-modal">
+      <h3 id="qrTitle">QR подписки</h3>
+      <p class="modal-sub">Hiddify · v2rayN · Nekoray</p>
+      <div class="qr-wrap"><canvas id="qrCanvas"></canvas></div>
+      <div class="linktext full" id="qrUrl"></div>
+      <div class="modal-actions center">
+        <button id="qrCopy" class="btn">Копировать</button>
+        <button id="qrClose" class="btn primary">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GitHub -->
+  <div id="githubModal" class="modal-back">
+    <div class="modal glass">
+      <h3>GitHub</h3>
+      <p class="modal-sub">Токен с правом <code>repo</code> + <code>workflow</code> для применения и синка.</p>
+      <label>Personal Access Token</label>
+      <input id="ghToken" type="password" autocomplete="off" placeholder="ghp_…" />
+      <label>Репозиторий</label>
+      <input id="ghRepo" type="text" value="Shamsyyy/vpn-portal" />
+      <div class="modal-actions">
+        <button id="ghCancel" class="btn">Отмена</button>
+        <button id="ghSubmit" class="btn primary">Сохранить</button>
       </div>
     </div>
   </div>
 
   <div id="toast" class="toast"></div>
 
+  <script src="qrcode.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

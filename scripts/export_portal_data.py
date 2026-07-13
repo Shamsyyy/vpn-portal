@@ -17,7 +17,7 @@ SERVERS = [
         "id": "shm137",
         "name": "shm137",
         "host": "89.125.59.150",
-        "label": "shm137 (router + Roditeli)",
+        "label": "shm137",
     },
     {
         "id": "evka",
@@ -38,6 +38,9 @@ def fmt_bytes(n):
         n /= 1024
     return f"{n:.1f} PB"
 
+now_ms = int(time.time() * 1000)
+online_threshold = now_ms - 5 * 60 * 1000
+
 con = sqlite3.connect("/etc/x-ui/x-ui.db")
 cur = con.cursor()
 cur.execute("SELECT key, value FROM settings WHERE key IN ('subPort','subPath','subDomain','subEnable','remarkModel')")
@@ -47,11 +50,16 @@ sub_port = settings.get("subPort") or ""
 sub_path = (settings.get("subPath") or "/").rstrip("/")
 sub_base = f"https://{sub_domain}:{sub_port}{sub_path}" if sub_domain and sub_port else ""
 
-cur.execute("SELECT id, remark, enable, port, protocol, tag FROM inbounds ORDER BY port")
-inbounds = [
-    {"id": r[0], "remark": r[1], "enable": bool(r[2]), "port": r[3], "protocol": r[4], "tag": r[5]}
-    for r in cur.fetchall()
-]
+cur.execute("SELECT id, remark, enable, port, protocol, tag, stream_settings FROM inbounds ORDER BY port")
+inbounds = []
+for r in cur.fetchall():
+    stream = json.loads(r[6] or "{}")
+    inbounds.append({
+        "id": r[0], "remark": r[1], "enable": bool(r[2]), "port": r[3],
+        "protocol": r[4], "tag": r[5],
+        "network": stream.get("network") or "tcp",
+        "security": stream.get("security") or "",
+    })
 
 cur.execute("""
     SELECT c.email, c.enable, c.expiry_time, c.total_gb, c.limit_ip, c.sub_id, c.id,
@@ -61,8 +69,16 @@ cur.execute("""
     ORDER BY c.email
 """)
 clients = []
+total_up = total_down = 0
+online_count = 0
 for row in cur.fetchall():
     email, enable, expiry, total_gb, limit_ip, sub_id, uuid, up, down, last_online = row
+    up, down, last_online = int(up or 0), int(down or 0), int(last_online or 0)
+    total_up += up
+    total_down += down
+    is_online = last_online >= online_threshold
+    if is_online:
+        online_count += 1
     clients.append({
         "email": email,
         "enable": bool(enable),
@@ -70,13 +86,13 @@ for row in cur.fetchall():
         "totalGB": int(total_gb or 0),
         "limitIp": int(limit_ip or 0),
         "subId": sub_id or "",
-        "uuid": uuid or "",
+        "uuid": str(uuid or ""),
         "subUrl": f"{sub_base}/{sub_id}" if sub_id and sub_base else "",
-        "up": int(up or 0),
-        "down": int(down or 0),
+        "up": up, "down": down,
         "upHuman": fmt_bytes(up),
         "downHuman": fmt_bytes(down),
-        "lastOnline": int(last_online or 0),
+        "lastOnline": last_online,
+        "online": is_online,
     })
 
 cur.execute("SELECT client_id, inbound_id, flow_override FROM client_inbounds ORDER BY client_id, inbound_id")
@@ -86,15 +102,11 @@ client_inbounds = [
 ]
 con.close()
 
-xray_state = "unknown"
-try:
-    out = subprocess.check_output(["systemctl", "is-active", "x-ui"], text=True).strip()
-    xray_state = out
-except Exception:
-    pass
-
+xui_state = subprocess.getoutput("systemctl is-active x-ui").strip()
+uptime = subprocess.getoutput("cut -d. -f1 /proc/uptime").strip()
 loads = subprocess.getoutput("cat /proc/loadavg").split()[:3]
 mem = subprocess.getoutput("free -m | awk 'NR==2{print $3,$2}'").split()
+cpu_line = subprocess.getoutput("top -bn1 | grep 'Cpu(s)' | head -1")
 
 print(json.dumps({
     "exportedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -103,11 +115,20 @@ print(json.dumps({
     "inbounds": inbounds,
     "clients": clients,
     "clientInbounds": client_inbounds,
+    "totals": {
+        "up": total_up, "down": total_down,
+        "upHuman": fmt_bytes(total_up),
+        "downHuman": fmt_bytes(total_down),
+        "online": online_count,
+        "enabled": sum(1 for c in clients if c["enable"]),
+    },
     "status": {
-        "xui": xray_state,
+        "xui": xui_state,
+        "uptimeSec": int(uptime) if uptime.isdigit() else 0,
         "load": loads,
         "memUsedMb": int(mem[0]) if len(mem) > 0 else 0,
         "memTotalMb": int(mem[1]) if len(mem) > 1 else 0,
+        "cpuHint": cpu_line[:80],
     },
 }, ensure_ascii=False))
 '''

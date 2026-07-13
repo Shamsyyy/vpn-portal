@@ -3,7 +3,7 @@
   "servers": [
     {
       "id": "shm137",
-      "label": "shm137 (router + Roditeli)",
+      "label": "shm137",
       "host": "89.125.59.150",
       "clients": 13,
       "inbounds": 3,
