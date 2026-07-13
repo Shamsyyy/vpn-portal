@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-13T09:19:26Z",
+  "exportedAt": "2026-07-13T09:31:36Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -11,7 +11,11 @@
       "protocol": "vless",
       "tag": "in-443-tcp",
       "network": "xhttp",
-      "security": "reality"
+      "security": "reality",
+      "sni": "google.ru",
+      "dest": "google.ru:443",
+      "xhttpPath": "/gen_204",
+      "xhttpMode": "stream-one"
     },
     {
       "id": 6,
@@ -21,7 +25,11 @@
       "protocol": "vless",
       "tag": "in-2053-xhttp",
       "network": "xhttp",
-      "security": "reality"
+      "security": "reality",
+      "sni": "google.ru",
+      "dest": "google.ru:443",
+      "xhttpPath": "/stream/v2",
+      "xhttpMode": "stream-one"
     },
     {
       "id": 4,
@@ -31,7 +39,11 @@
       "protocol": "vless",
       "tag": "in-8443-tcp",
       "network": "tcp",
-      "security": "reality"
+      "security": "reality",
+      "sni": "www.yahoo.com",
+      "dest": "yahoo.com:443",
+      "xhttpPath": "",
+      "xhttpMode": ""
     }
   ],
   "clients": [
@@ -60,12 +72,12 @@
       "subId": "8ca2da5a-7da2-4a82-9ea5-e80d370c1556",
       "uuid": "2",
       "subUrl": "https://89.125.59.150:31289/shm137/8ca2da5a-7da2-4a82-9ea5-e80d370c1556",
-      "up": 290295442,
-      "down": 4614447389,
-      "upHuman": "276.8 MB",
+      "up": 290437401,
+      "down": 4614790669,
+      "upHuman": "277.0 MB",
       "downHuman": "4.3 GB",
-      "lastOnline": 1783934314009,
-      "online": true
+      "lastOnline": 1783934484012,
+      "online": false
     },
     {
       "email": "Farid",
@@ -204,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 6426845832,
-      "down": 186617741478,
+      "up": 6429191520,
+      "down": 186622409914,
       "upHuman": "6.0 GB",
       "downHuman": "173.8 GB",
-      "lastOnline": 1783934364007,
+      "lastOnline": 1783935094015,
       "online": true
     },
     {
@@ -241,6 +253,22 @@
       "upHuman": "34.0 KB",
       "downHuman": "154.7 KB",
       "lastOnline": 1783590112006,
+      "online": false
+    },
+    {
+      "email": "test1",
+      "enable": true,
+      "expiryTime": 0,
+      "totalGB": 0,
+      "limitIp": 0,
+      "subId": "05520f2b-530f-447a-8548-bf0960be6984",
+      "uuid": "20",
+      "subUrl": "https://89.125.59.150:31289/shm137/05520f2b-530f-447a-8548-bf0960be6984",
+      "up": 0,
+      "down": 0,
+      "upHuman": "0 B",
+      "downHuman": "0 B",
+      "lastOnline": 0,
       "online": false
     },
     {
@@ -470,27 +498,42 @@
       "clientId": 19,
       "inboundId": 6,
       "flowOverride": ""
+    },
+    {
+      "clientId": 20,
+      "inboundId": 1,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 20,
+      "inboundId": 4,
+      "flowOverride": ""
+    },
+    {
+      "clientId": 20,
+      "inboundId": 6,
+      "flowOverride": ""
     }
   ],
   "totals": {
-    "up": 11421888374,
-    "down": 306841063409,
+    "up": 11424376021,
+    "down": 306846075125,
     "upHuman": "10.6 GB",
     "downHuman": "285.8 GB",
-    "online": 2,
-    "enabled": 14
+    "online": 1,
+    "enabled": 15
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 2812031,
+    "uptimeSec": 2812761,
     "load": [
-      "0.06",
-      "0.03",
-      "0.00"
+      "0.08",
+      "0.02",
+      "0.01"
     ],
-    "memUsedMb": 670,
+    "memUsedMb": 675,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  0.0 us,  4.8 sy,  0.0 ni, 95.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  4.8 us,  4.8 sy,  0.0 ni, 90.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
