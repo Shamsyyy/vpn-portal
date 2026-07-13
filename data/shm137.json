@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-13T14:29:18Z",
+  "exportedAt": "2026-07-13T19:19:33Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -136,12 +136,12 @@
       "subId": "57f428a7-3dca-4849-a3d8-6c3f19ca7346",
       "uuid": "7",
       "subUrl": "https://89.125.59.150:31289/shm137/57f428a7-3dca-4849-a3d8-6c3f19ca7346",
-      "up": 4155644046,
-      "down": 107788968076,
+      "up": 4158278137,
+      "down": 107809533203,
       "upHuman": "3.9 GB",
       "downHuman": "100.4 GB",
-      "lastOnline": 1783952664009,
-      "online": true
+      "lastOnline": 1783956939028,
+      "online": false
     },
     {
       "email": "daur",
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 6530359266,
-      "down": 189539513811,
+      "up": 6557660460,
+      "down": 190456774546,
       "upHuman": "6.1 GB",
-      "downHuman": "176.5 GB",
-      "lastOnline": 1783952954013,
+      "downHuman": "177.4 GB",
+      "lastOnline": 1783970369012,
       "online": true
     },
     {
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 11528087984,
-    "down": 309806867832,
-    "upHuman": "10.7 GB",
-    "downHuman": "288.5 GB",
-    "online": 2,
+    "up": 11558023269,
+    "down": 310744693694,
+    "upHuman": "10.8 GB",
+    "downHuman": "289.4 GB",
+    "online": 1,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 2830623,
+    "uptimeSec": 2848038,
     "load": [
-      "0.01",
-      "0.06",
-      "0.02"
+      "0.00",
+      "0.00",
+      "0.00"
     ],
-    "memUsedMb": 707,
+    "memUsedMb": 675,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 95.5 id,  0.0 wa,  0.0 hi,  0.0 si,  4.5 st "
   },
   "id": "shm137",
   "name": "shm137",
