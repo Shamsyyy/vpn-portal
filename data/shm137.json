@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-13T09:33:13Z",
+  "exportedAt": "2026-07-13T09:36:01Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -216,28 +216,12 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 6429446253,
-      "down": 186622761027,
+      "up": 6429902644,
+      "down": 186624132566,
       "upHuman": "6.0 GB",
       "downHuman": "173.8 GB",
-      "lastOnline": 1783935189010,
+      "lastOnline": 1783935359014,
       "online": true
-    },
-    {
-      "email": "test",
-      "enable": true,
-      "expiryTime": 0,
-      "totalGB": 0,
-      "limitIp": 0,
-      "subId": "5660380d-dcd0-4262-a997-5d4659528bd1",
-      "uuid": "19",
-      "subUrl": "https://89.125.59.150:31289/shm137/5660380d-dcd0-4262-a997-5d4659528bd1",
-      "up": 0,
-      "down": 0,
-      "upHuman": "0 B",
-      "downHuman": "0 B",
-      "lastOnline": 0,
-      "online": false
     },
     {
       "email": "test-volodya",
@@ -485,21 +469,6 @@
       "flowOverride": ""
     },
     {
-      "clientId": 19,
-      "inboundId": 1,
-      "flowOverride": ""
-    },
-    {
-      "clientId": 19,
-      "inboundId": 4,
-      "flowOverride": ""
-    },
-    {
-      "clientId": 19,
-      "inboundId": 6,
-      "flowOverride": ""
-    },
-    {
       "clientId": 20,
       "inboundId": 1,
       "flowOverride": ""
@@ -516,24 +485,24 @@
     }
   ],
   "totals": {
-    "up": 11424630754,
-    "down": 306846426238,
+    "up": 11425087145,
+    "down": 306847797777,
     "upHuman": "10.6 GB",
     "downHuman": "285.8 GB",
     "online": 1,
-    "enabled": 15
+    "enabled": 14
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 2812858,
+    "uptimeSec": 2813026,
     "load": [
-      "0.01",
+      "0.04",
       "0.01",
       "0.00"
     ],
-    "memUsedMb": 685,
+    "memUsedMb": 709,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  0.0 us,  4.3 sy,  0.0 ni, 91.3 id,  0.0 wa,  0.0 hi,  0.0 si,  4.3 st "
+    "cpuHint": "%Cpu(s):  4.8 us,  0.0 sy,  0.0 ni, 95.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
