@@ -23,9 +23,12 @@
         </div>
       </div>
       <p class="login-hint">Единая панель клиентов и подписок. Доступ по паролю.</p>
-      <div id="loginError" class="login-error"></div>
+      <div id="loginError" class="login-error" role="alert" aria-live="polite"></div>
       <label for="password">Пароль</label>
-      <input id="password" type="password" autocomplete="current-password" placeholder="Введите пароль" />
+      <div class="password-wrap">
+        <input id="password" type="password" autocomplete="current-password" placeholder="Введите пароль" />
+        <button type="button" id="togglePassword" class="password-toggle" aria-label="Показать пароль" title="Показать пароль">👁</button>
+      </div>
       <button id="loginBtn" class="btn primary full">Войти</button>
     </div>
   </div>

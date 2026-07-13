@@ -138,7 +138,63 @@ input:focus, select:focus {
 .btn.full { width: 100%; }
 .btn.sm { padding: 7px 11px; font-size: 12px; border-radius: 10px; }
 
-.login-error { color: #ffb4bc; font-size: 13px; margin-bottom: 12px; min-height: 18px; }
+.login-error {
+  color: #ffb4bc;
+  font-size: 13px;
+  margin-bottom: 12px;
+  min-height: 18px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(80, 30, 38, 0.35);
+  border: 1px solid rgba(255, 100, 120, 0.25);
+  display: none;
+}
+
+.login-error.show { display: block; }
+.login-error.ok {
+  color: #b8ffd8;
+  background: rgba(18, 50, 36, 0.35);
+  border-color: rgba(61, 214, 160, 0.25);
+}
+
+.login-card.shake { animation: shake 0.45s ease; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+
+.password-wrap {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.password-wrap input {
+  margin-bottom: 0;
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.65;
+  border-radius: 8px;
+}
+
+.password-toggle:hover { opacity: 1; background: rgba(255,255,255,0.06); }
+
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
 /* Header */
 .app-header {

@@ -67,9 +67,39 @@
     return out;
   }
 
+  function setLoginError(msg, type = "error") {
+    const el = $("loginError");
+    el.textContent = msg || "";
+    el.className = "login-error" + (msg ? " show" : "") + (type === "ok" ? " ok" : "");
+  }
+
+  function shakeLogin() {
+    document.querySelector(".login-card")?.classList.add("shake");
+    setTimeout(() => document.querySelector(".login-card")?.classList.remove("shake"), 500);
+  }
+
+  async function loadAuthConfig() {
+    if (!window.isSecureContext) {
+      throw new Error("Вход доступен только по HTTPS. Откройте сайт через github.io");
+    }
+    if (!window.crypto?.subtle) {
+      throw new Error("Браузер не поддерживает проверку пароля. Попробуйте Chrome или Firefox");
+    }
+    const res = await fetch(`auth.json?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) {
+      throw new Error(`Не удалось загрузить настройки входа (HTTP ${res.status})`);
+    }
+    const cfg = await res.json();
+    if (!cfg?.salt || !cfg?.hash || !cfg?.iterations) {
+      throw new Error("Файл auth.json повреждён или устарел");
+    }
+    return cfg;
+  }
+
   async function verifyPassword(password) {
     const salt = b64ToBytes(authConfig.salt);
     const expected = b64ToBytes(authConfig.hash);
+    const iterations = Number(authConfig.iterations) || 120000;
     const keyMaterial = await crypto.subtle.importKey(
       "raw",
       new TextEncoder().encode(password),
@@ -78,7 +108,7 @@
       ["deriveBits"]
     );
     const bits = await crypto.subtle.deriveBits(
-      { name: "PBKDF2", salt, iterations: authConfig.iterations, hash: "SHA-256" },
+      { name: "PBKDF2", salt, iterations, hash: "SHA-256" },
       keyMaterial,
       256
     );
@@ -87,6 +117,44 @@
     let diff = 0;
     for (let i = 0; i < got.length; i++) diff |= got[i] ^ expected[i];
     return diff === 0;
+  }
+
+  async function attemptLogin() {
+    const pw = $("password").value;
+    const btn = $("loginBtn");
+    setLoginError("");
+
+    if (!pw) {
+      setLoginError("Введите пароль");
+      shakeLogin();
+      $("password").focus();
+      return;
+    }
+
+    btn.disabled = true;
+    const prevLabel = btn.textContent;
+    btn.textContent = "Проверка…";
+
+    try {
+      if (!authConfig) authConfig = await loadAuthConfig();
+      const ok = await verifyPassword(pw);
+      if (!ok) {
+        setLoginError("Некорректный пароль. Проверьте раскладку, Caps Lock и лишние пробелы");
+        shakeLogin();
+        $("password").focus();
+        $("password").select();
+        return;
+      }
+      sessionStorage.setItem(SESSION_KEY, "1");
+      setLoginError("Пароль верный, загрузка…", "ok");
+      await enterApp();
+    } catch (e) {
+      setLoginError(e.message || "Ошибка входа");
+      shakeLogin();
+    } finally {
+      btn.disabled = false;
+      btn.textContent = prevLabel;
+    }
   }
 
   function toast(msg, isErr = false) {
@@ -562,21 +630,28 @@
   }
 
   async function init() {
-    authConfig = await fetch(`auth.json?t=${Date.now()}`).then((r) => r.json());
+    try {
+      authConfig = await loadAuthConfig();
+    } catch (e) {
+      setLoginError(e.message || "Ошибка загрузки auth.json");
+    }
+
     if (sessionStorage.getItem(SESSION_KEY) === "1") {
       try { await enterApp(); } catch (e) { toast("Ошибка загрузки: " + e.message, true); }
     }
 
-    $("loginBtn").onclick = async () => {
-      const pw = $("password").value;
-      $("loginError").textContent = "";
-      try {
-        if (!(await verifyPassword(pw))) { $("loginError").textContent = "Неверный пароль"; return; }
-        sessionStorage.setItem(SESSION_KEY, "1");
-        await enterApp();
-      } catch (e) { $("loginError").textContent = e.message; }
+    $("loginBtn").onclick = () => attemptLogin();
+    $("password").addEventListener("keydown", (e) => { if (e.key === "Enter") attemptLogin(); });
+
+    $("togglePassword").onclick = () => {
+      const input = $("password");
+      const btn = $("togglePassword");
+      const show = input.type === "password";
+      input.type = show ? "text" : "password";
+      btn.textContent = show ? "🙈" : "👁";
+      btn.title = show ? "Скрыть пароль" : "Показать пароль";
+      btn.setAttribute("aria-label", btn.title);
     };
-    $("password").addEventListener("keydown", (e) => { if (e.key === "Enter") $("loginBtn").click(); });
 
     $("logoutBtn").onclick = () => { sessionStorage.removeItem(SESSION_KEY); location.reload(); };
     $("search").oninput = () => renderClients();
