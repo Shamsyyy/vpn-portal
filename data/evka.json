@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-13T08:07:47Z",
+  "exportedAt": "2026-07-13T08:37:41Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -9,7 +9,9 @@
       "enable": true,
       "port": 443,
       "protocol": "vless",
-      "tag": "in-443-tcp"
+      "tag": "in-443-tcp",
+      "network": "xhttp",
+      "security": "reality"
     },
     {
       "id": 6,
@@ -17,7 +19,9 @@
       "enable": true,
       "port": 2053,
       "protocol": "vless",
-      "tag": "in-2053-grpc"
+      "tag": "in-2053-grpc",
+      "network": "xhttp",
+      "security": "reality"
     },
     {
       "id": 5,
@@ -25,7 +29,9 @@
       "enable": true,
       "port": 8443,
       "protocol": "vless",
-      "tag": "in-8443-tcp"
+      "tag": "in-8443-tcp",
+      "network": "tcp",
+      "security": "reality"
     }
   ],
   "clients": [
@@ -36,13 +42,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "ecf9ba43-55a0-421a-a4fc-225b78335898",
-      "uuid": 37,
+      "uuid": "37",
       "subUrl": "https://78.17.4.178:31289/shm137/ecf9ba43-55a0-421a-a4fc-225b78335898",
-      "up": 8333631087,
-      "down": 32742941730,
+      "up": 8334220768,
+      "down": 32776631733,
       "upHuman": "7.8 GB",
       "downHuman": "30.5 GB",
-      "lastOnline": 1783930065041
+      "lastOnline": 1783931830038,
+      "online": true
     },
     {
       "email": "Arturchik",
@@ -51,13 +58,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "34af45f2-8e74-4757-9a2c-d0496b9570e2",
-      "uuid": 33,
+      "uuid": "33",
       "subUrl": "https://78.17.4.178:31289/shm137/34af45f2-8e74-4757-9a2c-d0496b9570e2",
       "up": 934284762,
       "down": 12305062279,
       "upHuman": "891.0 MB",
       "downHuman": "11.5 GB",
-      "lastOnline": 1783709721011
+      "lastOnline": 1783709721011,
+      "online": false
     },
     {
       "email": "Dasha",
@@ -66,13 +74,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "7fee55ca-d082-45ef-85cd-03682a53fe81",
-      "uuid": 34,
+      "uuid": "34",
       "subUrl": "https://78.17.4.178:31289/shm137/7fee55ca-d082-45ef-85cd-03682a53fe81",
       "up": 57628621,
       "down": 1544848599,
       "upHuman": "55.0 MB",
       "downHuman": "1.4 GB",
-      "lastOnline": 1783885305050
+      "lastOnline": 1783885305050,
+      "online": false
     },
     {
       "email": "Diana-evka",
@@ -81,13 +90,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "d439127a-b6bc-4c03-9be7-2f0ad050551e",
-      "uuid": 18,
+      "uuid": "18",
       "subUrl": "https://78.17.4.178:31289/shm137/d439127a-b6bc-4c03-9be7-2f0ad050551e",
       "up": 2295619,
       "down": 16748259,
       "upHuman": "2.2 MB",
       "downHuman": "16.0 MB",
-      "lastOnline": 1783602141014
+      "lastOnline": 1783602141014,
+      "online": false
     },
     {
       "email": "Drug-Airata",
@@ -96,13 +106,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "b4678471-05be-4666-945c-be775b434e41",
-      "uuid": 40,
+      "uuid": "40",
       "subUrl": "https://78.17.4.178:31289/shm137/b4678471-05be-4666-945c-be775b434e41",
-      "up": 1325195098,
-      "down": 20461968043,
+      "up": 1325451445,
+      "down": 20463448128,
       "upHuman": "1.2 GB",
       "downHuman": "19.1 GB",
-      "lastOnline": 1783930025022
+      "lastOnline": 1783931860026,
+      "online": true
     },
     {
       "email": "Drug-Airata-n2",
@@ -111,13 +122,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "ebf39fbb-9cf7-4d1e-a170-2a1c05b13244",
-      "uuid": 42,
+      "uuid": "42",
       "subUrl": "https://78.17.4.178:31289/shm137/ebf39fbb-9cf7-4d1e-a170-2a1c05b13244",
       "up": 0,
       "down": 0,
       "upHuman": "0 B",
       "downHuman": "0 B",
-      "lastOnline": 0
+      "lastOnline": 0,
+      "online": false
     },
     {
       "email": "Elvina-evka",
@@ -126,13 +138,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "0e0dd75f-545f-493f-b6db-7d31a8e0391b",
-      "uuid": 39,
+      "uuid": "39",
       "subUrl": "https://78.17.4.178:31289/shm137/0e0dd75f-545f-493f-b6db-7d31a8e0391b",
       "up": 231889890,
       "down": 4344460357,
       "upHuman": "221.1 MB",
       "downHuman": "4.0 GB",
-      "lastOnline": 1783590828020
+      "lastOnline": 1783590828020,
+      "online": false
     },
     {
       "email": "Farida",
@@ -141,13 +154,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "2049846d-3731-4756-954a-897bca5e3fcb",
-      "uuid": 36,
+      "uuid": "36",
       "subUrl": "https://78.17.4.178:31289/shm137/2049846d-3731-4756-954a-897bca5e3fcb",
-      "up": 1875172558,
-      "down": 49502797278,
-      "upHuman": "1.7 GB",
+      "up": 1879926784,
+      "down": 49514574803,
+      "upHuman": "1.8 GB",
       "downHuman": "46.1 GB",
-      "lastOnline": 1783929615023
+      "lastOnline": 1783931860026,
+      "online": true
     },
     {
       "email": "Kolya-evka",
@@ -156,13 +170,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "b43a8384-b888-49ec-a646-f6d53a775bd3",
-      "uuid": 35,
+      "uuid": "35",
       "subUrl": "https://78.17.4.178:31289/shm137/b43a8384-b888-49ec-a646-f6d53a775bd3",
       "up": 9002,
       "down": 70571,
       "upHuman": "8.8 KB",
       "downHuman": "68.9 KB",
-      "lastOnline": 1782681697020
+      "lastOnline": 1782681697020,
+      "online": false
     },
     {
       "email": "Marat-evka",
@@ -171,13 +186,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "40e64420-8848-46a5-8a50-448881ee65d1",
-      "uuid": 41,
+      "uuid": "41",
       "subUrl": "https://78.17.4.178:31289/shm137/40e64420-8848-46a5-8a50-448881ee65d1",
       "up": 7268,
       "down": 65538,
       "upHuman": "7.1 KB",
       "downHuman": "64.0 KB",
-      "lastOnline": 1783683906030
+      "lastOnline": 1783683906030,
+      "online": false
     },
     {
       "email": "daur-evka",
@@ -186,13 +202,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "80f27a6e-0e99-4c85-8d38-55365bc6d5bf",
-      "uuid": 9,
+      "uuid": "9",
       "subUrl": "https://78.17.4.178:31289/shm137/80f27a6e-0e99-4c85-8d38-55365bc6d5bf",
-      "up": 1007529,
-      "down": 10925894,
-      "upHuman": "983.9 KB",
-      "downHuman": "10.4 MB",
-      "lastOnline": 1783599221007
+      "up": 1101627,
+      "down": 11049085,
+      "upHuman": "1.1 MB",
+      "downHuman": "10.5 MB",
+      "lastOnline": 1783930160024,
+      "online": false
     },
     {
       "email": "nikita-evka",
@@ -201,13 +218,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "4578794c-0b7e-4412-9b76-d21ff330be23",
-      "uuid": 31,
+      "uuid": "31",
       "subUrl": "https://78.17.4.178:31289/shm137/4578794c-0b7e-4412-9b76-d21ff330be23",
       "up": 31561242,
       "down": 564614106,
       "upHuman": "30.1 MB",
       "downHuman": "538.5 MB",
-      "lastOnline": 1783590823034
+      "lastOnline": 1783590823034,
+      "online": false
     },
     {
       "email": "router-evka-new",
@@ -216,13 +234,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "d3a1f241-02e7-4944-adc8-adeae2cad721",
-      "uuid": 32,
+      "uuid": "32",
       "subUrl": "https://78.17.4.178:31289/shm137/d3a1f241-02e7-4944-adc8-adeae2cad721",
-      "up": 118503097,
-      "down": 1312827703,
+      "up": 118535695,
+      "down": 1312928937,
       "upHuman": "113.0 MB",
       "downHuman": "1.2 GB",
-      "lastOnline": 1783929805027
+      "lastOnline": 1783931605031,
+      "online": true
     },
     {
       "email": "test-evka-1",
@@ -231,13 +250,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "f4a37f0c-7dcf-4d03-ae15-dbdcb96337c5",
-      "uuid": 24,
+      "uuid": "24",
       "subUrl": "https://78.17.4.178:31289/shm137/f4a37f0c-7dcf-4d03-ae15-dbdcb96337c5",
       "up": 593044833,
       "down": 2880638032,
       "upHuman": "565.6 MB",
       "downHuman": "2.7 GB",
-      "lastOnline": 1783692421026
+      "lastOnline": 1783692421026,
+      "online": false
     },
     {
       "email": "test-evka-2",
@@ -246,13 +266,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
-      "uuid": 25,
+      "uuid": "25",
       "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
-      "up": 358738954,
-      "down": 7405699464,
-      "upHuman": "342.1 MB",
+      "up": 359431242,
+      "down": 7406896655,
+      "upHuman": "342.8 MB",
       "downHuman": "6.9 GB",
-      "lastOnline": 1783930040077
+      "lastOnline": 1783931845024,
+      "online": true
     },
     {
       "email": "test-evka-3",
@@ -261,13 +282,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "7c926190-a970-48d2-abbc-c42190b4b5ad",
-      "uuid": 26,
+      "uuid": "26",
       "subUrl": "https://78.17.4.178:31289/shm137/7c926190-a970-48d2-abbc-c42190b4b5ad",
       "up": 154443760,
       "down": 1262569289,
       "upHuman": "147.3 MB",
       "downHuman": "1.2 GB",
-      "lastOnline": 1782736416012
+      "lastOnline": 1782736416012,
+      "online": false
     },
     {
       "email": "test-evka-4",
@@ -276,13 +298,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "21a40643-baff-4a71-bb6a-fb672884f2ca",
-      "uuid": 27,
+      "uuid": "27",
       "subUrl": "https://78.17.4.178:31289/shm137/21a40643-baff-4a71-bb6a-fb672884f2ca",
       "up": 290197536,
       "down": 3727639276,
       "upHuman": "276.8 MB",
       "downHuman": "3.5 GB",
-      "lastOnline": 1783064456012
+      "lastOnline": 1783064456012,
+      "online": false
     },
     {
       "email": "test-evka-5",
@@ -291,13 +314,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "427e3bb6-4dd9-4e88-a71b-98a5013b8ddc",
-      "uuid": 28,
+      "uuid": "28",
       "subUrl": "https://78.17.4.178:31289/shm137/427e3bb6-4dd9-4e88-a71b-98a5013b8ddc",
       "up": 81554,
       "down": 407798,
       "upHuman": "79.6 KB",
       "downHuman": "398.2 KB",
-      "lastOnline": 1782681692017
+      "lastOnline": 1782681692017,
+      "online": false
     },
     {
       "email": "test-router-evka",
@@ -306,13 +330,14 @@
       "totalGB": 0,
       "limitIp": 0,
       "subId": "f14a5482-64f9-44aa-aab0-f00e19ad12cd",
-      "uuid": 30,
+      "uuid": "30",
       "subUrl": "https://78.17.4.178:31289/shm137/f14a5482-64f9-44aa-aab0-f00e19ad12cd",
       "up": 378204,
       "down": 718704,
       "upHuman": "369.3 KB",
       "downHuman": "701.9 KB",
-      "lastOnline": 1782681692017
+      "lastOnline": 1782681692017,
+      "online": false
     }
   ],
   "clientInbounds": [
@@ -602,15 +627,25 @@
       "flowOverride": ""
     }
   ],
+  "totals": {
+    "up": 14314489852,
+    "down": 138133372149,
+    "upHuman": "13.3 GB",
+    "downHuman": "128.6 GB",
+    "online": 5,
+    "enabled": 19
+  },
   "status": {
     "xui": "active",
+    "uptimeSec": 337019,
     "load": [
-      "0.26",
-      "0.20",
-      "0.17"
+      "0.02",
+      "0.12",
+      "0.10"
     ],
-    "memUsedMb": 362,
-    "memTotalMb": 3911
+    "memUsedMb": 368,
+    "memTotalMb": 3911,
+    "cpuHint": "%Cpu(s):  0.0 us,  5.1 sy,  0.0 ni, 82.1 id,  0.0 wa,  0.0 hi,  0.0 si, 12.8 st"
   },
   "id": "evka",
   "name": "evka",
