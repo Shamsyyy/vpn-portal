@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-13T09:11:48Z",
+  "updatedAt": "2026-07-13T09:19:03Z",
   "servers": [
     {
       "id": "shm137",
       "label": "shm137",
       "host": "89.125.59.150",
-      "clients": 13,
+      "clients": 14,
       "inbounds": 3,
-      "exportedAt": "2026-07-13T09:11:50Z"
+      "exportedAt": "2026-07-13T09:19:05Z"
     },
     {
       "id": "evka",
@@ -15,7 +15,7 @@
       "host": "78.17.4.178",
       "clients": 19,
       "inbounds": 3,
-      "exportedAt": "2026-07-13T09:11:54Z"
+      "exportedAt": "2026-07-13T09:19:08Z"
     }
   ]
 }
