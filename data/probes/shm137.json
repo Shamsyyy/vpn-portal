@@ -1,0 +1,411 @@
+{
+  "results": [
+    {
+      "email": "Airat-main",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 265ms (TG 174ms, YT 115ms, IG 304ms), tcp/8443: 349ms (TG 383ms, YT 320ms, IG 579ms), xhttp/2053: 144ms (TG 166ms, YT 112ms, IG 304ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 265,
+          "detail": "туннель OK · 265 ms, TG 174ms, YT 115ms, IG 304ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 349,
+          "detail": "туннель OK · 349 ms, TG 383ms, YT 320ms, IG 579ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 144,
+          "detail": "туннель OK · 144 ms, TG 166ms, YT 112ms, IG 304ms"
+        }
+      ]
+    },
+    {
+      "email": "Diana",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 194ms (TG 154ms, YT 116ms, IG 338ms), tcp/8443: 349ms (TG 457ms, YT 364ms, IG 511ms), xhttp/2053: 145ms (TG 151ms, YT 145ms, IG 290ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 194,
+          "detail": "туннель OK · 194 ms, TG 154ms, YT 116ms, IG 338ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 349,
+          "detail": "туннель OK · 349 ms, TG 457ms, YT 364ms, IG 511ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 145,
+          "detail": "туннель OK · 145 ms, TG 151ms, YT 145ms, IG 290ms"
+        }
+      ]
+    },
+    {
+      "email": "Farid",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 218ms (TG 169ms, YT 116ms, IG 5316ms), tcp/8443: 443ms (TG 340ms, YT 303ms, IG 520ms), xhttp/2053: 146ms (TG 182ms, YT 136ms, IG 345ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 218,
+          "detail": "туннель OK · 218 ms, TG 169ms, YT 116ms, IG 5316ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 443,
+          "detail": "туннель OK · 443 ms, TG 340ms, YT 303ms, IG 520ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 146,
+          "detail": "туннель OK · 146 ms, TG 182ms, YT 136ms, IG 345ms"
+        }
+      ]
+    },
+    {
+      "email": "Kolya",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 168ms (TG 154ms, YT 117ms, IG 305ms), tcp/8443: 438ms (TG 397ms, YT 407ms, IG 550ms), xhttp/2053: 162ms (TG 155ms, YT 164ms, IG 299ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 168,
+          "detail": "туннель OK · 168 ms, TG 154ms, YT 117ms, IG 305ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 438,
+          "detail": "туннель OK · 438 ms, TG 397ms, YT 407ms, IG 550ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 162,
+          "detail": "туннель OK · 162 ms, TG 155ms, YT 164ms, IG 299ms"
+        }
+      ]
+    },
+    {
+      "email": "Nikita1",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 258ms (TG 153ms, YT 120ms, IG 314ms), tcp/8443: 381ms (TG 457ms, YT 416ms, IG 466ms), xhttp/2053: 150ms (TG 166ms, YT 119ms, IG 294ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 258,
+          "detail": "туннель OK · 258 ms, TG 153ms, YT 120ms, IG 314ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 381,
+          "detail": "туннель OK · 381 ms, TG 457ms, YT 416ms, IG 466ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 150,
+          "detail": "туннель OK · 150 ms, TG 166ms, YT 119ms, IG 294ms"
+        }
+      ]
+    },
+    {
+      "email": "Roditeli",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 148ms (TG 168ms, YT 122ms, IG 255ms), tcp/8443: 407ms (TG 475ms, YT 350ms, IG 530ms), xhttp/2053: 161ms (TG 158ms, YT 128ms, IG 5279ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 148,
+          "detail": "туннель OK · 148 ms, TG 168ms, YT 122ms, IG 255ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 407,
+          "detail": "туннель OK · 407 ms, TG 475ms, YT 350ms, IG 530ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 161,
+          "detail": "туннель OK · 161 ms, TG 158ms, YT 128ms, IG 5279ms"
+        }
+      ]
+    },
+    {
+      "email": "daur",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 163ms (TG 165ms, YT 116ms, IG 311ms), tcp/8443: 322ms (TG 344ms, YT 299ms, IG 606ms), xhttp/2053: 154ms (TG 156ms, YT 117ms, IG 301ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 163,
+          "detail": "туннель OK · 163 ms, TG 165ms, YT 116ms, IG 311ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 322,
+          "detail": "туннель OK · 322 ms, TG 344ms, YT 299ms, IG 606ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 154,
+          "detail": "туннель OK · 154 ms, TG 156ms, YT 117ms, IG 301ms"
+        }
+      ]
+    },
+    {
+      "email": "daur-only-openai",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 181ms (TG 174ms, YT 116ms, IG 304ms), tcp/8443: 467ms (TG 411ms, YT 300ms, IG 479ms), xhttp/2053: 147ms (TG 176ms, YT 161ms, IG 294ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 181,
+          "detail": "туннель OK · 181 ms, TG 174ms, YT 116ms, IG 304ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 467,
+          "detail": "туннель OK · 467 ms, TG 411ms, YT 300ms, IG 479ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 147,
+          "detail": "туннель OK · 147 ms, TG 176ms, YT 161ms, IG 294ms"
+        }
+      ]
+    },
+    {
+      "email": "job",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 231ms (TG 174ms, YT 352ms, IG 310ms), tcp/8443: 435ms (TG 445ms, YT 372ms, IG 515ms), xhttp/2053: 157ms (TG 155ms, YT 116ms, IG 300ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 231,
+          "detail": "туннель OK · 231 ms, TG 174ms, YT 352ms, IG 310ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 435,
+          "detail": "туннель OK · 435 ms, TG 445ms, YT 372ms, IG 515ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 157,
+          "detail": "туннель OK · 157 ms, TG 155ms, YT 116ms, IG 300ms"
+        }
+      ]
+    },
+    {
+      "email": "random",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 155ms (TG 162ms, YT 121ms, IG 313ms), tcp/8443: 330ms (TG 350ms, YT 366ms, IG 466ms), xhttp/2053: 155ms (TG 160ms, YT 117ms, IG 308ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 155,
+          "detail": "туннель OK · 155 ms, TG 162ms, YT 121ms, IG 313ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 330,
+          "detail": "туннель OK · 330 ms, TG 350ms, YT 366ms, IG 466ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 155,
+          "detail": "туннель OK · 155 ms, TG 160ms, YT 117ms, IG 308ms"
+        }
+      ]
+    },
+    {
+      "email": "router",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 198ms (TG 166ms, YT 138ms, IG 291ms), tcp/8443: 394ms (TG 356ms, YT 352ms, IG 595ms), xhttp/2053: 146ms (TG 163ms, YT 166ms, IG 274ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 198,
+          "detail": "туннель OK · 198 ms, TG 166ms, YT 138ms, IG 291ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 394,
+          "detail": "туннель OK · 394 ms, TG 356ms, YT 352ms, IG 595ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 146,
+          "detail": "туннель OK · 146 ms, TG 163ms, YT 166ms, IG 274ms"
+        }
+      ]
+    },
+    {
+      "email": "test-volodya",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 228ms (TG 154ms, YT 138ms, IG 311ms), tcp/8443: 334ms (TG 338ms, YT 294ms, IG 481ms), xhttp/2053: 162ms (TG 166ms, YT 121ms, IG 296ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 228,
+          "detail": "туннель OK · 228 ms, TG 154ms, YT 138ms, IG 311ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 334,
+          "detail": "туннель OK · 334 ms, TG 338ms, YT 294ms, IG 481ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 162,
+          "detail": "туннель OK · 162 ms, TG 166ms, YT 121ms, IG 296ms"
+        }
+      ]
+    },
+    {
+      "email": "yandex-list",
+      "ok": true,
+      "summary": "туннель OK · xhttp/443: 260ms (TG 180ms, YT 138ms, IG 286ms), tcp/8443: 440ms (TG 331ms, YT 361ms, IG 513ms), xhttp/2053: 142ms (TG 160ms, YT 124ms, IG 286ms)",
+      "tunnels_ok": 3,
+      "tunnels_total": 3,
+      "issues": [],
+      "tunnels": [
+        {
+          "port": 443,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 260,
+          "detail": "туннель OK · 260 ms, TG 180ms, YT 138ms, IG 286ms"
+        },
+        {
+          "port": 8443,
+          "type": "tcp",
+          "tunnel_ok": true,
+          "latency_ms": 440,
+          "detail": "туннель OK · 440 ms, TG 331ms, YT 361ms, IG 513ms"
+        },
+        {
+          "port": 2053,
+          "type": "xhttp",
+          "tunnel_ok": true,
+          "latency_ms": 142,
+          "detail": "туннель OK · 142 ms, TG 160ms, YT 124ms, IG 286ms"
+        }
+      ]
+    }
+  ],
+  "serverId": "shm137",
+  "probedAt": "2026-07-13T10:15:45Z",
+  "emailFilter": "all",
+  "fullTunnel": true
+}
