@@ -19,6 +19,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: portal-data-push
+  cancel-in-progress: false
+
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -39,21 +43,13 @@ jobs:
             exit 1
           fi
 
-      - name: Run VPN probes
+      - name: Commit probe results
         env:
           SSH_PASS_SHM: ${{ secrets.SSH_PASS_SHM }}
           SSH_PASS_EVKA: ${{ secrets.SSH_PASS_EVKA }}
         run: |
-          python3 scripts/probe_portal_ci.py "${{ inputs.server }}" "${{ inputs.email }}" "${{ inputs.full_tunnel }}"
-
-      - name: Commit probe results
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/probes/
-          if git diff --staged --quiet; then
-            echo "No probe output changes"
-            exit 0
-          fi
-          git commit -m "chore: VPN probe results (${{ inputs.server }} / ${{ inputs.email }})"
-          git push
+          chmod +x scripts/git_push_portal_data.sh
+          SERVER="${{ inputs.server }}"
+          EMAIL="${{ inputs.email }}"
+          scripts/git_push_portal_data.sh "chore: VPN probe results (${SERVER} / ${EMAIL})" 5 \
+            "python3 scripts/probe_portal_ci.py \"${SERVER}\" \"${EMAIL}\" \"${{ inputs.full_tunnel }}\""
