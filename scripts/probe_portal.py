@@ -39,7 +39,7 @@ sys.path.insert(0, "/opt/vpn-dashboard")
 from vpn_probe import probe_client
 
 email_filter = {json.dumps(email)}
-tunnel_all = {json.dumps(full)}
+tunnel_all = {repr(full)}
 public_host = {json.dumps(meta["public_host"])}
 
 con = sqlite3.connect("/etc/x-ui/x-ui.db")

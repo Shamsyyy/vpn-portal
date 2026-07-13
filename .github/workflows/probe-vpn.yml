@@ -43,7 +43,7 @@ jobs:
             exit 1
           fi
 
-      - name: Commit probe results
+      - name: Run VPN probes and push results
         env:
           SSH_PASS_SHM: ${{ secrets.SSH_PASS_SHM }}
           SSH_PASS_EVKA: ${{ secrets.SSH_PASS_EVKA }}
@@ -51,5 +51,6 @@ jobs:
           chmod +x scripts/git_push_portal_data.sh
           SERVER="${{ inputs.server }}"
           EMAIL="${{ inputs.email }}"
+          FULL="${{ inputs.full_tunnel }}"
           scripts/git_push_portal_data.sh "chore: VPN probe results (${SERVER} / ${EMAIL})" 5 \
-            "python3 scripts/probe_portal_ci.py \"${SERVER}\" \"${EMAIL}\" \"${{ inputs.full_tunnel }}\""
+            "python3 scripts/probe_portal_ci.py '${SERVER}' '${EMAIL}' '${FULL}'"
