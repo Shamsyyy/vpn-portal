@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-17T02:22:05Z",
+  "exportedAt": "2026-07-17T08:03:46Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -56,11 +56,11 @@
       "subId": "ecf9ba43-55a0-421a-a4fc-225b78335898",
       "uuid": "37",
       "subUrl": "https://78.17.4.178:31289/shm137/ecf9ba43-55a0-421a-a4fc-225b78335898",
-      "up": 9222576726,
-      "down": 37548323171,
+      "up": 9226076394,
+      "down": 37646960310,
       "upHuman": "8.6 GB",
-      "downHuman": "35.0 GB",
-      "lastOnline": 1784254909020,
+      "downHuman": "35.1 GB",
+      "lastOnline": 1784275419059,
       "online": true
     },
     {
@@ -168,12 +168,12 @@
       "subId": "4d3e4980-a79c-4806-8140-7c8cab57f215",
       "uuid": "43",
       "subUrl": "https://78.17.4.178:31289/shm137/4d3e4980-a79c-4806-8140-7c8cab57f215",
-      "up": 580082095,
-      "down": 16655220636,
-      "upHuman": "553.2 MB",
-      "downHuman": "15.5 GB",
-      "lastOnline": 1784254599018,
-      "online": false
+      "up": 614529892,
+      "down": 18088514344,
+      "upHuman": "586.1 MB",
+      "downHuman": "16.8 GB",
+      "lastOnline": 1784275424022,
+      "online": true
     },
     {
       "email": "Farida",
@@ -232,11 +232,11 @@
       "subId": "80f27a6e-0e99-4c85-8d38-55365bc6d5bf",
       "uuid": "9",
       "subUrl": "https://78.17.4.178:31289/shm137/80f27a6e-0e99-4c85-8d38-55365bc6d5bf",
-      "up": 137779131,
-      "down": 1951212276,
+      "up": 137780177,
+      "down": 1951213808,
       "upHuman": "131.4 MB",
       "downHuman": "1.8 GB",
-      "lastOnline": 1784211189051,
+      "lastOnline": 1784273074007,
       "online": false
     },
     {
@@ -264,11 +264,11 @@
       "subId": "d3a1f241-02e7-4944-adc8-adeae2cad721",
       "uuid": "32",
       "subUrl": "https://78.17.4.178:31289/shm137/d3a1f241-02e7-4944-adc8-adeae2cad721",
-      "up": 123212479,
-      "down": 1327404116,
-      "upHuman": "117.5 MB",
+      "up": 123603655,
+      "down": 1328618468,
+      "upHuman": "117.9 MB",
       "downHuman": "1.2 GB",
-      "lastOnline": 1784254634010,
+      "lastOnline": 1784275334029,
       "online": true
     },
     {
@@ -280,12 +280,12 @@
       "subId": "f4a37f0c-7dcf-4d03-ae15-dbdcb96337c5",
       "uuid": "24",
       "subUrl": "https://78.17.4.178:31289/shm137/f4a37f0c-7dcf-4d03-ae15-dbdcb96337c5",
-      "up": 850571977,
-      "down": 6599445428,
-      "upHuman": "811.2 MB",
-      "downHuman": "6.1 GB",
-      "lastOnline": 1784213654031,
-      "online": false
+      "up": 853237136,
+      "down": 6649879299,
+      "upHuman": "813.7 MB",
+      "downHuman": "6.2 GB",
+      "lastOnline": 1784275419059,
+      "online": true
     },
     {
       "email": "test-evka-2",
@@ -296,11 +296,11 @@
       "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
       "uuid": "25",
       "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
-      "up": 1120925945,
-      "down": 16209504203,
-      "upHuman": "1.0 GB",
-      "downHuman": "15.1 GB",
-      "lastOnline": 1784254924012,
+      "up": 1242748488,
+      "down": 16559414031,
+      "upHuman": "1.2 GB",
+      "downHuman": "15.4 GB",
+      "lastOnline": 1784275354033,
       "online": true
     },
     {
@@ -671,24 +671,24 @@
     }
   ],
   "totals": {
-    "up": 17944896225,
-    "down": 186822014888,
-    "upHuman": "16.7 GB",
-    "downHuman": "174.0 GB",
-    "online": 3,
+    "up": 18107723614,
+    "down": 188755505318,
+    "upHuman": "16.9 GB",
+    "downHuman": "175.8 GB",
+    "online": 5,
     "enabled": 20
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 660082,
+    "uptimeSec": 680583,
     "load": [
       "0.00",
-      "0.05",
-      "0.07"
+      "0.00",
+      "0.01"
     ],
-    "memUsedMb": 358,
+    "memUsedMb": 362,
     "memTotalMb": 3911,
-    "cpuHint": "%Cpu(s):  3.1 us,  6.2 sy,  0.0 ni, 90.6 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
+    "cpuHint": "%Cpu(s):  0.0 us,  8.8 sy,  0.0 ni, 88.2 id,  0.0 wa,  0.0 hi,  2.9 si,  0.0 st"
   },
   "id": "evka",
   "name": "evka",
