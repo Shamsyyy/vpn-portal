@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-19T08:10:34Z",
+  "exportedAt": "2026-07-19T13:09:43Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -152,12 +152,12 @@
       "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
       "uuid": "1",
       "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
-      "up": 121110150,
-      "down": 4610068396,
-      "upHuman": "115.5 MB",
-      "downHuman": "4.3 GB",
-      "lastOnline": 1783937719014,
-      "online": false
+      "up": 129582987,
+      "down": 4854266460,
+      "upHuman": "123.6 MB",
+      "downHuman": "4.5 GB",
+      "lastOnline": 1784466537007,
+      "online": true
     },
     {
       "email": "daur-only-openai",
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 7766608546,
-      "down": 213640838961,
+      "up": 7766613979,
+      "down": 213640855825,
       "upHuman": "7.2 GB",
       "downHuman": "199.0 GB",
-      "lastOnline": 1784442167008,
+      "lastOnline": 1784455907006,
       "online": false
     },
     {
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 12775360031,
-    "down": 333979371816,
+    "up": 12783838301,
+    "down": 334223586744,
     "upHuman": "11.9 GB",
-    "downHuman": "311.0 GB",
-    "online": 0,
+    "downHuman": "311.3 GB",
+    "online": 1,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 3326299,
+    "uptimeSec": 3344248,
     "load": [
-      "0.14",
       "0.06",
-      "0.01"
+      "0.02",
+      "0.00"
     ],
-    "memUsedMb": 839,
+    "memUsedMb": 837,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  0.0 us,  8.7 sy,  0.0 ni, 91.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
