@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-20T08:52:15Z",
+  "exportedAt": "2026-07-20T13:58:36Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -56,12 +56,12 @@
       "subId": "ecf9ba43-55a0-421a-a4fc-225b78335898",
       "uuid": "37",
       "subUrl": "https://78.17.4.178:31289/shm137/ecf9ba43-55a0-421a-a4fc-225b78335898",
-      "up": 10360822136,
-      "down": 41496075369,
-      "upHuman": "9.6 GB",
-      "downHuman": "38.6 GB",
-      "lastOnline": 1784537006025,
-      "online": false
+      "up": 10386401614,
+      "down": 41519341604,
+      "upHuman": "9.7 GB",
+      "downHuman": "38.7 GB",
+      "lastOnline": 1784555906013,
+      "online": true
     },
     {
       "email": "Arturchik",
@@ -168,11 +168,11 @@
       "subId": "4d3e4980-a79c-4806-8140-7c8cab57f215",
       "uuid": "43",
       "subUrl": "https://78.17.4.178:31289/shm137/4d3e4980-a79c-4806-8140-7c8cab57f215",
-      "up": 1068901707,
-      "down": 28130679486,
-      "upHuman": "1019.4 MB",
-      "downHuman": "26.2 GB",
-      "lastOnline": 1784537481035,
+      "up": 1119764453,
+      "down": 28984801027,
+      "upHuman": "1.0 GB",
+      "downHuman": "27.0 GB",
+      "lastOnline": 1784555871019,
       "online": true
     },
     {
@@ -264,11 +264,11 @@
       "subId": "d3a1f241-02e7-4944-adc8-adeae2cad721",
       "uuid": "32",
       "subUrl": "https://78.17.4.178:31289/shm137/d3a1f241-02e7-4944-adc8-adeae2cad721",
-      "up": 126302045,
-      "down": 1336995199,
+      "up": 126307478,
+      "down": 1337012065,
       "upHuman": "120.5 MB",
       "downHuman": "1.2 GB",
-      "lastOnline": 1784476368011,
+      "lastOnline": 1784555236010,
       "online": false
     },
     {
@@ -280,12 +280,12 @@
       "subId": "f4a37f0c-7dcf-4d03-ae15-dbdcb96337c5",
       "uuid": "24",
       "subUrl": "https://78.17.4.178:31289/shm137/f4a37f0c-7dcf-4d03-ae15-dbdcb96337c5",
-      "up": 880433006,
-      "down": 7030251918,
-      "upHuman": "839.6 MB",
-      "downHuman": "6.5 GB",
-      "lastOnline": 1784537531038,
-      "online": true
+      "up": 890247758,
+      "down": 7115438150,
+      "upHuman": "849.0 MB",
+      "downHuman": "6.6 GB",
+      "lastOnline": 1784547821019,
+      "online": false
     },
     {
       "email": "test-evka-2",
@@ -296,11 +296,11 @@
       "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
       "uuid": "25",
       "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
-      "up": 2184746528,
-      "down": 24212151905,
-      "upHuman": "2.0 GB",
-      "downHuman": "22.5 GB",
-      "lastOnline": 1784537531038,
+      "up": 3578112570,
+      "down": 24607864820,
+      "upHuman": "3.3 GB",
+      "downHuman": "22.9 GB",
+      "lastOnline": 1784555911021,
       "online": true
     },
     {
@@ -328,11 +328,11 @@
       "subId": "21a40643-baff-4a71-bb6a-fb672884f2ca",
       "uuid": "27",
       "subUrl": "https://78.17.4.178:31289/shm137/21a40643-baff-4a71-bb6a-fb672884f2ca",
-      "up": 302677368,
-      "down": 4114872002,
-      "upHuman": "288.7 MB",
-      "downHuman": "3.8 GB",
-      "lastOnline": 1784359530024,
+      "up": 303371987,
+      "down": 4141948292,
+      "upHuman": "289.3 MB",
+      "downHuman": "3.9 GB",
+      "lastOnline": 1784551461020,
       "online": false
     },
     {
@@ -671,24 +671,24 @@
     }
   ],
   "totals": {
-    "up": 20716049979,
-    "down": 211682532992,
-    "upHuman": "19.3 GB",
-    "downHuman": "197.1 GB",
+    "up": 22196373049,
+    "down": 213067913071,
+    "upHuman": "20.7 GB",
+    "downHuman": "198.4 GB",
     "online": 3,
     "enabled": 20
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 942692,
+    "uptimeSec": 961073,
     "load": [
-      "0.24",
-      "0.21",
-      "0.18"
+      "0.96",
+      "0.37",
+      "0.16"
     ],
-    "memUsedMb": 347,
+    "memUsedMb": 357,
     "memTotalMb": 3911,
-    "cpuHint": "%Cpu(s):  5.4 us,  5.4 sy,  0.0 ni, 78.4 id,  0.0 wa,  0.0 hi,  2.7 si,  8.1 st"
+    "cpuHint": "%Cpu(s):  5.9 us,  2.9 sy,  0.0 ni, 82.4 id,  0.0 wa,  0.0 hi,  2.9 si,  5.9 st"
   },
   "id": "evka",
   "name": "evka",
