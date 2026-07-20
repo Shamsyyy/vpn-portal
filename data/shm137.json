@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-19T19:01:20Z",
+  "exportedAt": "2026-07-20T02:38:28Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -152,11 +152,11 @@
       "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
       "uuid": "1",
       "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
-      "up": 165491358,
-      "down": 6273267154,
-      "upHuman": "157.8 MB",
-      "downHuman": "5.8 GB",
-      "lastOnline": 1784487457007,
+      "up": 168150195,
+      "down": 6320653970,
+      "upHuman": "160.4 MB",
+      "downHuman": "5.9 GB",
+      "lastOnline": 1784515107004,
       "online": true
     },
     {
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 7766711830,
-      "down": 213643406493,
+      "up": 7766717263,
+      "down": 213643423360,
       "upHuman": "7.2 GB",
       "downHuman": "199.0 GB",
-      "lastOnline": 1784468837005,
+      "lastOnline": 1784499107010,
       "online": false
     },
     {
@@ -454,8 +454,8 @@
     }
   ],
   "totals": {
-    "up": 12819844523,
-    "down": 335645138106,
+    "up": 12822508793,
+    "down": 335692541789,
     "upHuman": "11.9 GB",
     "downHuman": "312.6 GB",
     "online": 1,
@@ -463,15 +463,15 @@
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 3365345,
+    "uptimeSec": 3392773,
     "load": [
       "0.01",
-      "0.02",
+      "0.00",
       "0.00"
     ],
-    "memUsedMb": 847,
+    "memUsedMb": 852,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s): 54.5 us,  0.0 sy,  0.0 ni, 45.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  4.3 us,  4.3 sy,  0.0 ni, 91.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
