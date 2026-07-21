@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-20T19:39:55Z",
+  "exportedAt": "2026-07-21T02:22:28Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -168,11 +168,11 @@
       "subId": "4d3e4980-a79c-4806-8140-7c8cab57f215",
       "uuid": "43",
       "subUrl": "https://78.17.4.178:31289/shm137/4d3e4980-a79c-4806-8140-7c8cab57f215",
-      "up": 1181605616,
-      "down": 31223714903,
+      "up": 1197394989,
+      "down": 31984259200,
       "upHuman": "1.1 GB",
-      "downHuman": "29.1 GB",
-      "lastOnline": 1784576391021,
+      "downHuman": "29.8 GB",
+      "lastOnline": 1784600501019,
       "online": true
     },
     {
@@ -296,12 +296,12 @@
       "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
       "uuid": "25",
       "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
-      "up": 4061527072,
-      "down": 24878614017,
+      "up": 4069901518,
+      "down": 25426091608,
       "upHuman": "3.8 GB",
-      "downHuman": "23.2 GB",
-      "lastOnline": 1784576316020,
-      "online": true
+      "downHuman": "23.7 GB",
+      "lastOnline": 1784599356017,
+      "online": false
     },
     {
       "email": "test-evka-3",
@@ -671,24 +671,24 @@
     }
   ],
   "totals": {
-    "up": 22793714923,
-    "down": 215657765783,
-    "upHuman": "21.2 GB",
-    "downHuman": "200.8 GB",
-    "online": 2,
+    "up": 22817878742,
+    "down": 216965787671,
+    "upHuman": "21.3 GB",
+    "downHuman": "202.1 GB",
+    "online": 1,
     "enabled": 20
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 981552,
+    "uptimeSec": 1005705,
     "load": [
-      "0.00",
       "0.01",
-      "0.03"
+      "0.04",
+      "0.04"
     ],
-    "memUsedMb": 355,
+    "memUsedMb": 353,
     "memTotalMb": 3911,
-    "cpuHint": "%Cpu(s):  0.0 us,  3.2 sy,  0.0 ni, 96.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
+    "cpuHint": "%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
   },
   "id": "evka",
   "name": "evka",
