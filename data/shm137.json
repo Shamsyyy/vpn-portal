@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-21T13:40:31Z",
+  "exportedAt": "2026-07-21T19:15:28Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -56,11 +56,11 @@
       "subId": "3cd3df2f-b960-44d9-a1c0-e7327d1befdd",
       "uuid": "17",
       "subUrl": "https://89.125.59.150:31289/shm137/3cd3df2f-b960-44d9-a1c0-e7327d1befdd",
-      "up": 139187,
-      "down": 725304,
-      "upHuman": "135.9 KB",
-      "downHuman": "708.3 KB",
-      "lastOnline": 1783937679020,
+      "up": 139503,
+      "down": 739079,
+      "upHuman": "136.2 KB",
+      "downHuman": "721.8 KB",
+      "lastOnline": 1784658987007,
       "online": false
     },
     {
@@ -72,11 +72,11 @@
       "subId": "8ca2da5a-7da2-4a82-9ea5-e80d370c1556",
       "uuid": "2",
       "subUrl": "https://89.125.59.150:31289/shm137/8ca2da5a-7da2-4a82-9ea5-e80d370c1556",
-      "up": 420152175,
-      "down": 6762360176,
-      "upHuman": "400.7 MB",
+      "up": 423456363,
+      "down": 6776586308,
+      "upHuman": "403.8 MB",
       "downHuman": "6.3 GB",
-      "lastOnline": 1784636972006,
+      "lastOnline": 1784658967010,
       "online": false
     },
     {
@@ -152,11 +152,11 @@
       "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
       "uuid": "1",
       "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
-      "up": 337674592,
-      "down": 12340235164,
-      "upHuman": "322.0 MB",
-      "downHuman": "11.5 GB",
-      "lastOnline": 1784640817007,
+      "up": 353620706,
+      "down": 12577302914,
+      "upHuman": "337.2 MB",
+      "downHuman": "11.7 GB",
+      "lastOnline": 1784658967010,
       "online": false
     },
     {
@@ -200,11 +200,11 @@
       "subId": "c14204ba-e311-48d6-bd65-6c03351e2f7d",
       "uuid": "3",
       "subUrl": "https://89.125.59.150:31289/shm137/c14204ba-e311-48d6-bd65-6c03351e2f7d",
-      "up": 377008,
-      "down": 1531946,
+      "up": 377032,
+      "down": 1535052,
       "upHuman": "368.2 KB",
       "downHuman": "1.5 MB",
-      "lastOnline": 1783937734006,
+      "lastOnline": 1784658972010,
       "online": false
     },
     {
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 7766825976,
-      "down": 213645930774,
+      "up": 7766927275,
+      "down": 213648445111,
       "upHuman": "7.2 GB",
       "downHuman": "199.0 GB",
-      "lastOnline": 1784628712005,
+      "lastOnline": 1784658972010,
       "online": false
     },
     {
@@ -232,11 +232,11 @@
       "subId": "3606b7c1-ab9a-476d-adb6-89266dbeb056",
       "uuid": "13",
       "subUrl": "https://89.125.59.150:31289/shm137/3606b7c1-ab9a-476d-adb6-89266dbeb056",
-      "up": 38625,
-      "down": 205195,
-      "upHuman": "37.7 KB",
-      "downHuman": "200.4 KB",
-      "lastOnline": 1783937744017,
+      "up": 38941,
+      "down": 216211,
+      "upHuman": "38.0 KB",
+      "downHuman": "211.1 KB",
+      "lastOnline": 1784658982007,
       "online": false
     },
     {
@@ -248,11 +248,11 @@
       "subId": "b91cb4d8-0090-4604-8c7c-f7151339d169",
       "uuid": "6",
       "subUrl": "https://89.125.59.150:31289/shm137/b91cb4d8-0090-4604-8c7c-f7151339d169",
-      "up": 10358,
-      "down": 112359,
-      "upHuman": "10.1 KB",
-      "downHuman": "109.7 KB",
-      "lastOnline": 1783937749010,
+      "up": 12078,
+      "down": 133243,
+      "upHuman": "11.8 KB",
+      "downHuman": "130.1 KB",
+      "lastOnline": 1784658977015,
       "online": false
     }
   ],
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 13113457683,
-    "down": 343811487786,
+    "up": 13132811660,
+    "down": 344065344786,
     "upHuman": "12.2 GB",
-    "downHuman": "320.2 GB",
+    "downHuman": "320.4 GB",
     "online": 0,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 3518896,
+    "uptimeSec": 3538993,
     "load": [
-      "0.00",
-      "0.00",
-      "0.00"
+      "0.08",
+      "0.02",
+      "0.01"
     ],
-    "memUsedMb": 865,
+    "memUsedMb": 876,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  0.0 us,  4.5 sy,  0.0 ni, 95.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  4.5 us,  4.5 sy,  0.0 ni, 90.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
