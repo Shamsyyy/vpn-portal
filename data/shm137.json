@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-22T08:22:37Z",
+  "exportedAt": "2026-07-22T13:43:36Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -136,11 +136,11 @@
       "subId": "57f428a7-3dca-4849-a3d8-6c3f19ca7346",
       "uuid": "7",
       "subUrl": "https://89.125.59.150:31289/shm137/57f428a7-3dca-4849-a3d8-6c3f19ca7346",
-      "up": 4158278137,
-      "down": 107809533203,
+      "up": 4160023882,
+      "down": 107904031830,
       "upHuman": "3.9 GB",
-      "downHuman": "100.4 GB",
-      "lastOnline": 1783956939028,
+      "downHuman": "100.5 GB",
+      "lastOnline": 1784723842003,
       "online": false
     },
     {
@@ -152,11 +152,11 @@
       "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
       "uuid": "1",
       "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
-      "up": 353620706,
-      "down": 12577302914,
-      "upHuman": "337.2 MB",
-      "downHuman": "11.7 GB",
-      "lastOnline": 1784658967010,
+      "up": 387071729,
+      "down": 14226623526,
+      "upHuman": "369.1 MB",
+      "downHuman": "13.2 GB",
+      "lastOnline": 1784723932004,
       "online": false
     },
     {
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 7766932708,
-      "down": 213648461977,
+      "up": 7766938141,
+      "down": 213648478842,
       "upHuman": "7.2 GB",
       "downHuman": "199.0 GB",
-      "lastOnline": 1784671912006,
+      "lastOnline": 1784715112006,
       "online": false
     },
     {
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 13132817093,
-    "down": 344065361652,
-    "upHuman": "12.2 GB",
-    "downHuman": "320.4 GB",
+    "up": 13168019294,
+    "down": 345809197756,
+    "upHuman": "12.3 GB",
+    "downHuman": "322.1 GB",
     "online": 0,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 3586222,
+    "uptimeSec": 3605481,
     "load": [
-      "0.16",
-      "0.04",
-      "0.01"
+      "0.00",
+      "0.00",
+      "0.00"
     ],
-    "memUsedMb": 743,
+    "memUsedMb": 733,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  4.5 us,  4.5 sy,  0.0 ni, 90.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  4.5 us,  0.0 sy,  0.0 ni, 95.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
