@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-22T13:43:36Z",
+  "exportedAt": "2026-07-22T19:10:12Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -152,12 +152,12 @@
       "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
       "uuid": "1",
       "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
-      "up": 387071729,
-      "down": 14226623526,
-      "upHuman": "369.1 MB",
-      "downHuman": "13.2 GB",
-      "lastOnline": 1784723932004,
-      "online": false
+      "up": 420026775,
+      "down": 15948823095,
+      "upHuman": "400.6 MB",
+      "downHuman": "14.9 GB",
+      "lastOnline": 1784747412008,
+      "online": true
     },
     {
       "email": "daur-only-openai",
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 7766938141,
-      "down": 213648478842,
+      "up": 7767035970,
+      "down": 213650976848,
       "upHuman": "7.2 GB",
       "downHuman": "199.0 GB",
-      "lastOnline": 1784715112006,
+      "lastOnline": 1784728037017,
       "online": false
     },
     {
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 13168019294,
-    "down": 345809197756,
+    "up": 13201072169,
+    "down": 347533895331,
     "upHuman": "12.3 GB",
-    "downHuman": "322.1 GB",
-    "online": 0,
+    "downHuman": "323.7 GB",
+    "online": 1,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 3605481,
+    "uptimeSec": 3625077,
     "load": [
-      "0.00",
-      "0.00",
-      "0.00"
+      "0.04",
+      "0.05",
+      "0.01"
     ],
-    "memUsedMb": 733,
+    "memUsedMb": 732,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  4.5 us,  0.0 sy,  0.0 ni, 95.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  4.3 us,  4.3 sy,  0.0 ni, 91.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
