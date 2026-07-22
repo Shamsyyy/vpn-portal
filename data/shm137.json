@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-22T02:20:43Z",
+  "exportedAt": "2026-07-22T08:22:37Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -463,15 +463,15 @@
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 3564508,
+    "uptimeSec": 3586222,
     "load": [
-      "0.08",
-      "0.02",
+      "0.16",
+      "0.04",
       "0.01"
     ],
-    "memUsedMb": 878,
+    "memUsedMb": 743,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s): 54.5 us,  4.5 sy,  0.0 ni, 40.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  4.5 us,  4.5 sy,  0.0 ni, 90.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
