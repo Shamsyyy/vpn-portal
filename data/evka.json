@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-23T08:24:21Z",
+  "exportedAt": "2026-07-23T13:49:26Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -168,11 +168,11 @@
       "subId": "4d3e4980-a79c-4806-8140-7c8cab57f215",
       "uuid": "43",
       "subUrl": "https://78.17.4.178:31289/shm137/4d3e4980-a79c-4806-8140-7c8cab57f215",
-      "up": 1536510613,
-      "down": 39197729029,
-      "upHuman": "1.4 GB",
-      "downHuman": "36.5 GB",
-      "lastOnline": 1784795057020,
+      "up": 1563165163,
+      "down": 39750044027,
+      "upHuman": "1.5 GB",
+      "downHuman": "37.0 GB",
+      "lastOnline": 1784814562044,
       "online": true
     },
     {
@@ -232,11 +232,11 @@
       "subId": "80f27a6e-0e99-4c85-8d38-55365bc6d5bf",
       "uuid": "9",
       "subUrl": "https://78.17.4.178:31289/shm137/80f27a6e-0e99-4c85-8d38-55365bc6d5bf",
-      "up": 237706521,
-      "down": 4978667979,
+      "up": 237763391,
+      "down": 4978769665,
       "upHuman": "226.7 MB",
       "downHuman": "4.6 GB",
-      "lastOnline": 1784723990016,
+      "lastOnline": 1784796377014,
       "online": false
     },
     {
@@ -264,12 +264,12 @@
       "subId": "d3a1f241-02e7-4944-adc8-adeae2cad721",
       "uuid": "32",
       "subUrl": "https://78.17.4.178:31289/shm137/d3a1f241-02e7-4944-adc8-adeae2cad721",
-      "up": 126350942,
-      "down": 1337146995,
+      "up": 126356375,
+      "down": 1337163862,
       "upHuman": "120.5 MB",
       "downHuman": "1.2 GB",
-      "lastOnline": 1784778772012,
-      "online": false
+      "lastOnline": 1784814437045,
+      "online": true
     },
     {
       "email": "test-evka-1",
@@ -296,11 +296,11 @@
       "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
       "uuid": "25",
       "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
-      "up": 5688802698,
-      "down": 30923827247,
+      "up": 5700008902,
+      "down": 31586606268,
       "upHuman": "5.3 GB",
-      "downHuman": "28.8 GB",
-      "lastOnline": 1784795002033,
+      "downHuman": "29.4 GB",
+      "lastOnline": 1784814532029,
       "online": true
     },
     {
@@ -328,11 +328,11 @@
       "subId": "21a40643-baff-4a71-bb6a-fb672884f2ca",
       "uuid": "27",
       "subUrl": "https://78.17.4.178:31289/shm137/21a40643-baff-4a71-bb6a-fb672884f2ca",
-      "up": 329380794,
-      "down": 4954967970,
-      "upHuman": "314.1 MB",
-      "downHuman": "4.6 GB",
-      "lastOnline": 1784795057020,
+      "up": 334737998,
+      "down": 5030178003,
+      "upHuman": "319.2 MB",
+      "downHuman": "4.7 GB",
+      "lastOnline": 1784814562044,
       "online": true
     },
     {
@@ -671,24 +671,24 @@
     }
   ],
   "totals": {
-    "up": 25225272320,
-    "down": 233949235815,
+    "up": 25268552581,
+    "down": 235239658420,
     "upHuman": "23.5 GB",
-    "downHuman": "217.9 GB",
-    "online": 3,
+    "downHuman": "219.1 GB",
+    "online": 4,
     "enabled": 20
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 1200218,
+    "uptimeSec": 1219723,
     "load": [
-      "0.02",
-      "0.14",
-      "0.10"
+      "0.08",
+      "0.05",
+      "0.02"
     ],
-    "memUsedMb": 410,
+    "memUsedMb": 385,
     "memTotalMb": 3911,
-    "cpuHint": "%Cpu(s): 51.6 us,  3.2 sy,  0.0 ni, 45.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
+    "cpuHint": "%Cpu(s):  0.0 us,  3.2 sy,  0.0 ni, 96.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
   },
   "id": "evka",
   "name": "evka",
