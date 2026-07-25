@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-25T13:17:24Z",
+  "exportedAt": "2026-07-25T19:02:00Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -168,11 +168,11 @@
       "subId": "4d3e4980-a79c-4806-8140-7c8cab57f215",
       "uuid": "43",
       "subUrl": "https://78.17.4.178:31289/shm137/4d3e4980-a79c-4806-8140-7c8cab57f215",
-      "up": 2013339559,
-      "down": 49294641518,
+      "up": 2073710328,
+      "down": 50460052185,
       "upHuman": "1.9 GB",
-      "downHuman": "45.9 GB",
-      "lastOnline": 1784985436026,
+      "downHuman": "47.0 GB",
+      "lastOnline": 1785006116026,
       "online": true
     },
     {
@@ -264,11 +264,11 @@
       "subId": "d3a1f241-02e7-4944-adc8-adeae2cad721",
       "uuid": "32",
       "subUrl": "https://78.17.4.178:31289/shm137/d3a1f241-02e7-4944-adc8-adeae2cad721",
-      "up": 127388645,
-      "down": 1340368432,
-      "upHuman": "121.5 MB",
+      "up": 127660295,
+      "down": 1341211736,
+      "upHuman": "121.7 MB",
       "downHuman": "1.2 GB",
-      "lastOnline": 1784985436026,
+      "lastOnline": 1785005836022,
       "online": true
     },
     {
@@ -296,11 +296,11 @@
       "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
       "uuid": "25",
       "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
-      "up": 6953229335,
-      "down": 38458883255,
+      "up": 6996899248,
+      "down": 39659142516,
       "upHuman": "6.5 GB",
-      "downHuman": "35.8 GB",
-      "lastOnline": 1784985431026,
+      "downHuman": "36.9 GB",
+      "lastOnline": 1785006086011,
       "online": true
     },
     {
@@ -671,24 +671,24 @@
     }
   ],
   "totals": {
-    "up": 27005125433,
-    "down": 252322346503,
+    "up": 27109437765,
+    "down": 254688859735,
     "upHuman": "25.2 GB",
-    "downHuman": "235.0 GB",
+    "downHuman": "237.2 GB",
     "online": 3,
     "enabled": 20
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 1390601,
+    "uptimeSec": 1411277,
     "load": [
-      "0.07",
-      "0.08",
-      "0.03"
+      "0.06",
+      "0.05",
+      "0.01"
     ],
-    "memUsedMb": 386,
+    "memUsedMb": 385,
     "memTotalMb": 3911,
-    "cpuHint": "%Cpu(s):  0.0 us,  3.2 sy,  0.0 ni, 96.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
+    "cpuHint": "%Cpu(s): 50.0 us,  8.8 sy,  0.0 ni, 41.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
   },
   "id": "evka",
   "name": "evka",
