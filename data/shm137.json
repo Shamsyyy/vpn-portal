@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-28T19:17:30Z",
+  "exportedAt": "2026-07-29T02:13:47Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -152,12 +152,12 @@
       "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
       "uuid": "1",
       "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
-      "up": 510278640,
-      "down": 19233331780,
-      "upHuman": "486.6 MB",
-      "downHuman": "17.9 GB",
-      "lastOnline": 1785265348010,
-      "online": false
+      "up": 525892146,
+      "down": 19920159523,
+      "upHuman": "501.5 MB",
+      "downHuman": "18.6 GB",
+      "lastOnline": 1785291218009,
+      "online": true
     },
     {
       "email": "daur-only-openai",
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 8068562210,
-      "down": 249806300775,
+      "up": 8071464246,
+      "down": 250138307194,
       "upHuman": "7.5 GB",
-      "downHuman": "232.7 GB",
-      "lastOnline": 1785246433007,
+      "downHuman": "233.0 GB",
+      "lastOnline": 1785287233006,
       "online": false
     },
     {
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 13592850274,
-    "down": 386973727943,
+    "up": 13611365816,
+    "down": 387992562105,
     "upHuman": "12.7 GB",
-    "downHuman": "360.4 GB",
-    "online": 0,
+    "downHuman": "361.3 GB",
+    "online": 1,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 4143915,
+    "uptimeSec": 4168892,
     "load": [
-      "0.08",
-      "0.02",
-      "0.01"
+      "0.22",
+      "0.05",
+      "0.02"
     ],
-    "memUsedMb": 686,
+    "memUsedMb": 734,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  0.0 us,  4.5 sy,  0.0 ni, 95.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s): 34.6 us, 19.2 sy, 42.3 ni,  0.0 id,  0.0 wa,  0.0 hi,  3.8 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
