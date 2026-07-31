@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-31T13:56:37Z",
+  "exportedAt": "2026-07-31T19:19:22Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -152,11 +152,11 @@
       "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
       "uuid": "1",
       "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
-      "up": 559474290,
-      "down": 20914665688,
-      "upHuman": "533.6 MB",
-      "downHuman": "19.5 GB",
-      "lastOnline": 1785358088011,
+      "up": 566651541,
+      "down": 21015219559,
+      "upHuman": "540.4 MB",
+      "downHuman": "19.6 GB",
+      "lastOnline": 1785523533007,
       "online": false
     },
     {
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 8319958042,
-      "down": 268546804604,
-      "upHuman": "7.7 GB",
-      "downHuman": "250.1 GB",
-      "lastOnline": 1785506193006,
+      "up": 8409519378,
+      "down": 269953395367,
+      "upHuman": "7.8 GB",
+      "downHuman": "251.4 GB",
+      "lastOnline": 1785525558018,
       "online": true
     },
     {
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 13893441756,
-    "down": 407395565680,
-    "upHuman": "12.9 GB",
-    "downHuman": "379.4 GB",
+    "up": 13990180343,
+    "down": 408902710314,
+    "upHuman": "13.0 GB",
+    "downHuman": "380.8 GB",
     "online": 1,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 4383862,
+    "uptimeSec": 4403227,
     "load": [
-      "0.39",
-      "0.17",
-      "0.06"
+      "0.09",
+      "0.07",
+      "0.02"
     ],
-    "memUsedMb": 726,
+    "memUsedMb": 729,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  4.3 us,  4.3 sy,  0.0 ni, 91.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s):  8.7 us, 13.0 sy,  0.0 ni, 73.9 id,  0.0 wa,  0.0 hi,  0.0 si,  4.3 st "
   },
   "id": "shm137",
   "name": "shm137",
