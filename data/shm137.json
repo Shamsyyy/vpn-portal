@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-31T19:19:22Z",
+  "exportedAt": "2026-08-01T02:28:45Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -152,11 +152,11 @@
       "subId": "977f8abc-8fce-4c38-96a7-08670ffe674c",
       "uuid": "1",
       "subUrl": "https://89.125.59.150:31289/shm137/977f8abc-8fce-4c38-96a7-08670ffe674c",
-      "up": 566651541,
-      "down": 21015219559,
-      "upHuman": "540.4 MB",
-      "downHuman": "19.6 GB",
-      "lastOnline": 1785523533007,
+      "up": 568337647,
+      "down": 21137451808,
+      "upHuman": "542.0 MB",
+      "downHuman": "19.7 GB",
+      "lastOnline": 1785532548019,
       "online": false
     },
     {
@@ -216,12 +216,12 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 8409519378,
-      "down": 269953395367,
-      "upHuman": "7.8 GB",
-      "downHuman": "251.4 GB",
-      "lastOnline": 1785525558018,
-      "online": true
+      "up": 8449884327,
+      "down": 271919833381,
+      "upHuman": "7.9 GB",
+      "downHuman": "253.2 GB",
+      "lastOnline": 1785550788009,
+      "online": false
     },
     {
       "email": "test-volodya",
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 13990180343,
-    "down": 408902710314,
-    "upHuman": "13.0 GB",
-    "downHuman": "380.8 GB",
-    "online": 1,
+    "up": 14032231398,
+    "down": 410991380577,
+    "upHuman": "13.1 GB",
+    "downHuman": "382.8 GB",
+    "online": 0,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 4403227,
+    "uptimeSec": 4428990,
     "load": [
-      "0.09",
-      "0.07",
-      "0.02"
+      "0.00",
+      "0.00",
+      "0.00"
     ],
-    "memUsedMb": 729,
+    "memUsedMb": 697,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  8.7 us, 13.0 sy,  0.0 ni, 73.9 id,  0.0 wa,  0.0 hi,  0.0 si,  4.3 st "
+    "cpuHint": "%Cpu(s):  0.0 us,  4.8 sy,  0.0 ni, 95.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
