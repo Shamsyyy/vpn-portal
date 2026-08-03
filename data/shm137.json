@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-03T09:36:48Z",
+  "exportedAt": "2026-08-03T14:30:47Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -216,12 +216,12 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 8864229559,
-      "down": 285735070645,
+      "up": 8870095742,
+      "down": 286539204406,
       "upHuman": "8.3 GB",
-      "downHuman": "266.1 GB",
-      "lastOnline": 1785746378008,
-      "online": false
+      "downHuman": "266.9 GB",
+      "lastOnline": 1785767363005,
+      "online": true
     },
     {
       "email": "test-volodya",
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 14507677270,
-    "down": 426518495130,
+    "up": 14513543453,
+    "down": 427322628891,
     "upHuman": "13.5 GB",
-    "downHuman": "397.2 GB",
-    "online": 0,
+    "downHuman": "398.0 GB",
+    "online": 1,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 4627473,
+    "uptimeSec": 4645112,
     "load": [
       "0.00",
       "0.00",
       "0.00"
     ],
-    "memUsedMb": 876,
+    "memUsedMb": 888,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  0.0 us,  8.3 sy,  0.0 ni, 91.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
+    "cpuHint": "%Cpu(s): 52.4 us,  0.0 sy,  0.0 ni, 47.6 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
