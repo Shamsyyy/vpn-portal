@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-02T19:04:11Z",
+  "exportedAt": "2026-08-03T02:28:58Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -168,11 +168,11 @@
       "subId": "4d3e4980-a79c-4806-8140-7c8cab57f215",
       "uuid": "43",
       "subUrl": "https://78.17.4.178:31289/shm137/4d3e4980-a79c-4806-8140-7c8cab57f215",
-      "up": 3096854667,
-      "down": 78112657973,
+      "up": 3142757478,
+      "down": 79698926488,
       "upHuman": "2.9 GB",
-      "downHuman": "72.7 GB",
-      "lastOnline": 1785697375022,
+      "downHuman": "74.2 GB",
+      "lastOnline": 1785724080011,
       "online": true
     },
     {
@@ -264,11 +264,11 @@
       "subId": "d3a1f241-02e7-4944-adc8-adeae2cad721",
       "uuid": "32",
       "subUrl": "https://78.17.4.178:31289/shm137/d3a1f241-02e7-4944-adc8-adeae2cad721",
-      "up": 138944424,
-      "down": 1420094517,
-      "upHuman": "132.5 MB",
+      "up": 139427657,
+      "down": 1421595185,
+      "upHuman": "133.0 MB",
       "downHuman": "1.3 GB",
-      "lastOnline": 1785697335031,
+      "lastOnline": 1785724035008,
       "online": true
     },
     {
@@ -296,11 +296,11 @@
       "subId": "226c8625-e5a3-4cbc-b168-201827a84653",
       "uuid": "25",
       "subUrl": "https://78.17.4.178:31289/shm137/226c8625-e5a3-4cbc-b168-201827a84653",
-      "up": 12023121867,
-      "down": 59555323831,
+      "up": 12077562014,
+      "down": 60694999015,
       "upHuman": "11.2 GB",
-      "downHuman": "55.5 GB",
-      "lastOnline": 1785697450024,
+      "downHuman": "56.5 GB",
+      "lastOnline": 1785723910009,
       "online": true
     },
     {
@@ -671,24 +671,24 @@
     }
   ],
   "totals": {
-    "up": 33467994588,
-    "down": 304722264212,
-    "upHuman": "31.2 GB",
-    "downHuman": "283.8 GB",
+    "up": 33568820779,
+    "down": 307449708579,
+    "upHuman": "31.3 GB",
+    "downHuman": "286.3 GB",
     "online": 3,
     "enabled": 20
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 2102608,
+    "uptimeSec": 2129295,
     "load": [
-      "0.01",
-      "0.02",
-      "0.04"
+      "0.00",
+      "0.00",
+      "0.00"
     ],
-    "memUsedMb": 372,
+    "memUsedMb": 359,
     "memTotalMb": 3911,
-    "cpuHint": "%Cpu(s):  0.0 us,  3.1 sy,  0.0 ni, 96.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
+    "cpuHint": "%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
   },
   "id": "evka",
   "name": "evka",
