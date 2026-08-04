@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-04T14:02:07Z",
+  "exportedAt": "2026-08-04T19:26:18Z",
   "remarkModel": "-i",
   "subBase": "https://89.125.59.150:31289/shm137",
   "inbounds": [
@@ -120,12 +120,12 @@
       "subId": "9b0832ca-bf68-4784-8bd0-807d7d3d35c2",
       "uuid": "8",
       "subUrl": "https://89.125.59.150:31289/shm137/9b0832ca-bf68-4784-8bd0-807d7d3d35c2",
-      "up": 632827719,
-      "down": 3928152062,
-      "upHuman": "603.5 MB",
-      "downHuman": "3.7 GB",
-      "lastOnline": 1785852126006,
-      "online": true
+      "up": 640673932,
+      "down": 4377774984,
+      "upHuman": "611.0 MB",
+      "downHuman": "4.1 GB",
+      "lastOnline": 1785863051014,
+      "online": false
     },
     {
       "email": "Roditeli",
@@ -216,11 +216,11 @@
       "subId": "69fb4562-6e83-4d02-90d1-a1f365476f0e",
       "uuid": "5",
       "subUrl": "https://89.125.59.150:31289/shm137/69fb4562-6e83-4d02-90d1-a1f365476f0e",
-      "up": 9145574576,
-      "down": 295934286370,
+      "up": 9161623798,
+      "down": 296597365182,
       "upHuman": "8.5 GB",
-      "downHuman": "275.6 GB",
-      "lastOnline": 1785852116018,
+      "downHuman": "276.2 GB",
+      "lastOnline": 1785871576008,
       "online": true
     },
     {
@@ -454,24 +454,24 @@
     }
   ],
   "totals": {
-    "up": 14994106047,
-    "down": 437424279870,
+    "up": 15018001482,
+    "down": 438536981604,
     "upHuman": "14.0 GB",
-    "downHuman": "407.4 GB",
-    "online": 2,
+    "downHuman": "408.4 GB",
+    "online": 1,
     "enabled": 13
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 4729792,
+    "uptimeSec": 4749243,
     "load": [
-      "0.08",
-      "0.02",
-      "0.01"
+      "0.00",
+      "0.00",
+      "0.00"
     ],
-    "memUsedMb": 852,
+    "memUsedMb": 872,
     "memTotalMb": 3915,
-    "cpuHint": "%Cpu(s):  0.0 us,  4.3 sy,  0.0 ni, 91.3 id,  0.0 wa,  0.0 hi,  0.0 si,  4.3 st "
+    "cpuHint": "%Cpu(s): 52.2 us,  4.3 sy,  0.0 ni, 43.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st "
   },
   "id": "shm137",
   "name": "shm137",
