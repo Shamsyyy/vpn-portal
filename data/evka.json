@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-07T07:09:08Z",
+  "exportedAt": "2026-08-07T12:54:49Z",
   "remarkModel": "-i",
   "subBase": "https://78.17.4.178:31289/shm137",
   "inbounds": [
@@ -680,15 +680,15 @@
   },
   "status": {
     "xui": "active",
-    "uptimeSec": 2491706,
+    "uptimeSec": 2512446,
     "load": [
-      "0.00",
       "0.01",
-      "0.00"
+      "0.03",
+      "0.04"
     ],
-    "memUsedMb": 422,
+    "memUsedMb": 423,
     "memTotalMb": 3911,
-    "cpuHint": "%Cpu(s):  5.9 us,  2.9 sy,  0.0 ni, 91.2 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
+    "cpuHint": "%Cpu(s):  6.2 us,  6.2 sy,  0.0 ni, 87.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st"
   },
   "id": "evka",
   "name": "evka",
